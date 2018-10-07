@@ -177,21 +177,15 @@
     </nav>
 </header>
 
-<div class="bg-cover about-cover" style="background-image: url('/medias/cover.jpg')">
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container">
         <div class="row">
-            <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+            <div class="col s12 m12 l12">
                 <div class="brand">
-                    <div class="title center-align">
-                    
-                        My Blogs
-                    
-                    </div>
-
-                    <div class="description center-align">
-                    
-                        小洛洛の小小王国
-                    
+                    <div class="description center-align post-title">
+                        My First Blogs
                     </div>
                 </div>
             </div>
@@ -199,87 +193,182 @@
     </div>
 </div>
 
-<script>
-// Dynamically switch banner pictures every day.
-$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
-</script>
-
 <main class="content">
 
-    
+    <!-- 文章内容详情 -->
+    <div id="artDetail" class="container">
+        <div class="card">
+            <div class="card-content article-info">
+                
+                <div class="article-tag">
+                    
+                    <a href="/tags/none/" target="_blank"><span class="chip bg-color">none</span></a>
+                    
+                </div>
+                
+                <div class="post-info">
+                    
 
-<div id="tags" class="container chip-container">
-    <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">文章标签</div>
-            <div class="tag-chips">
-                
-                
-                <a href="/tags/SSR/" title="--SSR: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="--SSR" style="background-color: #F9EBEA;">--SSR
-                        <span class="tag-length">1</span>
+                    <span class="post-date">
+                        <i class="fa fa-clock-o fa-fw"></i>2018-10-03
                     </span>
+                </div>
+            </div>
+            <hr>
+            <div class="card-content article-card-content">
+                <div id="articleContent">
+                    <h1 id="一件有意义的事"><a href="#一件有意义的事" class="headerlink" title="一件有意义的事"></a><strong>一件有意义的事</strong></h1><hr>
+<p>这是我的第一篇博客，昨晚和林式说了之后，我问她,你猜我要写什么?她说，这是我的第一篇博客，应该记录一些有意义的事。其实我早已想好。</p>
+<p>我之前在<em>Aigirl</em>看到一篇连载，《我想做能在你的葬礼上描述你一生的人》。有个评论：</p>
+<p><img src="/images/My-First-Blogs/20181004134415.jpg" alt="wChat"></p>
+
+                </div>
+                <hr/>
+
+                <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+                <div class="reprint">
+                    <p>
+                        <span class="reprint-tip">转载请注明: </span>
+                        <a href="https://xiaosenluo.github.io" class="b-link-green">XIAOSENLUO</a>
+                        <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                        <a href="/uncategorized/2018/10/04/my-first-blogs/my-first-blogs.html" class="b-link-green">My First Blogs</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        
+
+        
+        <div class="disqus-card card" data-aos="fade-up">
+    <div id="disqus_thread" class="card-content">
+        <noscript>Please enable JavaScript to view the
+            <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+    </div>
+</div>
+
+<script type="text/javascript">
+    disqus_config = function () {
+        this.page.url = 'https://xiaosenluo.github.io/uncategorized/2018/10/04/my-first-blogs/my-first-blogs.html';
+        this.page.identifier = '/uncategorized/2018/10/04/my-first-blogs/my-first-blogs.html';
+        this.page.title = 'My First Blogs';
+    };
+    let disqus_shortname = 'xiaosenluo';
+
+    (function () { // DON'T EDIT BELOW THIS LINE
+        let d = document, s = d.createElement('script');
+        // 如：s.src = 'https://blinkfox.disqus.com/embed.js';
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+        
+
+        
+
+<article id="articles" class="container prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">上一篇</div>
+            <div class="card">
+                <a href="/embedded/2018/10/05/c51-lcd1602/c51-lcd1602.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="C51-LCD1602">
+                        
+                        <span class="card-title">C51-LCD1602</span>
+                    </div>
                 </a>
+                <div class="card-content article-content">
+                    <div class="summary">STC12C5A60S2调试LCD1602国庆假期，闲来无事，突然想起我还有几片STC12C5A60S2 [datasheet]，还有一片STC12L5A60S2 [datasheet],对了，还有两片STC15FWA60S2 [datas</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-04
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Embedded/" class="post-category" target="_blank">
+                                    --Embedded
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
                 
-                
-                <a href="/tags/C51/" title="--C51: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="--C51" style="background-color: #F5EEF8;">--C51
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/none/" title="none: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="none" style="background-color: #D5F5E3;">none
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/电脑技巧/" title="--电脑技巧: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="--电脑技巧" style="background-color: #E8F8F5;">--电脑技巧
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C51/" target="_blank">
+                        <span class="chip bg-color">--C51</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
-    </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">本篇</div>
+            <div class="card">
+                <a href="/uncategorized/2018/10/04/my-first-blogs/my-first-blogs.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="My First Blogs">
+                        
+                        <span class="card-title">My First Blogs</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">一件有意义的事
+这是我的第一篇博客，昨晚和林式说了之后，我问她,你猜我要写什么?她说，这是我的第一篇博客，应该记录一些有意义的事。其实我早已想好。
+我之前在Aigirl看到一篇连载，《我想做能在你的葬礼上描述你一生的人》。有个评论：
+
 </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            xiaosenluo
+                            
+                        </span>
+                    </div>
+                </div>
 
-    
-    <link rel="stylesheet" type="text/css" href="/libs/jqcloud/jqcloud.css">
-<style type="text/css">
-    #tag-wordcloud {
-        width: 100%;
-        height: 300px;
-    }
-</style>
-
-<div class="container">
-    <div class="card">
-        <div id="tag-wordcloud" class="card-content"></div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/none/" target="_blank">
+                        <span class="chip bg-color">none</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
     </div>
-</div>
-
-<script type="text/javascript" src="/libs/jqcloud/jqcloud-1.0.4.min.js"></script>
-<script type="text/javascript">
-    
-
-    $('#tag-wordcloud').jQCloud([{"text":"--SSR","weight":1,"link":"https://xiaosenluo.github.io/tags/SSR/"},{"text":"--C51","weight":1,"link":"https://xiaosenluo.github.io/tags/C51/"},{"text":"none","weight":1,"link":"https://xiaosenluo.github.io/tags/none/"},{"text":"--电脑技巧","weight":1,"link":"https://xiaosenluo.github.io/tags/电脑技巧/"}], {
-        autoResize: true
-    });
-</script>
-    
-
+</article>
+    </div>
 </main>
 
 <footer class="page-footer bg-color">
