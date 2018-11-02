@@ -189,13 +189,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        电脑开启卓越性能
+                        大创项目系列(一) OLED屏幕驱动
                     </div>
                 </div>
             </div>
@@ -212,7 +212,7 @@
                 
                 <div class="article-tag">
                     
-                    <a href="/tags/电脑技巧/" target="_blank"><span class="chip bg-color">--电脑技巧</span></a>
+                    <a href="/tags/STM32/" target="_blank"><span class="chip bg-color">-STM32</span></a>
                     
                 </div>
                 
@@ -221,44 +221,33 @@
                     <span class="post-cate">
                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/电脑/" class="post-category" target="_blank">
-                        --电脑
+                        <a href="/categories/Enbedded-STM32/" class="post-category" target="_blank">
+                        -Enbedded -STM32
                         </a>
                         
                     </span>
                     
 
                     <span class="post-date">
-                        <i class="fa fa-clock-o fa-fw"></i>2018-10-06
+                        <i class="fa fa-clock-o fa-fw"></i>2018-10-14
                     </span>
                 </div>
             </div>
             <hr>
             <div class="card-content article-card-content">
                 <div id="articleContent">
-                    <h1 id="win10系统（版本号在1803以上）开启性能模式"><a href="#win10系统（版本号在1803以上）开启性能模式" class="headerlink" title="win10系统（版本号在1803以上）开启性能模式"></a>win10系统（版本号在1803以上）开启性能模式</h1><p>win10升级到1803后，微软将电源管理现在的“性能模式”等同于原先的“平衡模式”，所以想要更好的发挥电脑性能，就要开启隐藏的卓越模式。</p>
+                    <h1 id="大创项目系列-一-OLED屏幕驱动"><a href="#大创项目系列-一-OLED屏幕驱动" class="headerlink" title="大创项目系列(一) OLED屏幕驱动"></a><strong>大创项目系列(一) OLED屏幕驱动</strong></h1><p>很久之前查阅资料，驱动过0.96寸OLED屏幕，现在将其移植到我的大创项目作调试信息输出显示，不太想用uart接口在电脑显示信息了，太浪费USB口了（第一次感觉到我的小本本USB口不够用）。</p>
+<p>这个0.96寸OLED屏是使用7线制的，默认使用4线spi。接口定义如下：</p>
 <ul>
-<li>以“管理员身份”运行<em>Windows shell</em>。</li>
+<li>GND</li>
+<li>VCC</li>
+<li>D0(SPI_SCK)</li>
+<li>D1(SPI_MOSI)</li>
+<li>RES(屏幕复位)</li>
+<li>DC(数据和命令控制管脚)</li>
+<li>CS(设备片选)</li>
 </ul>
-<img src="/dian-nao/2018/10/06/dian-nao-kai-qi-zhuo-yue-xing-neng/dian-nao-kai-qi-zhuo-yue-xing-neng/XSL_2018-10-06_12-36-00.png">
-<ul>
-<li>输入命令 <strong>powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61</strong>，回车，等一会，就会提示开启卓越模式（序列号不同，我也不清楚怎么回事）了。</li>
-</ul>
-<img src="/dian-nao/2018/10/06/dian-nao-kai-qi-zhuo-yue-xing-neng/dian-nao-kai-qi-zhuo-yue-xing-neng/XSL_2018-10-06_12-38-26.png">
-<ul>
-<li>打开<em>控制面板</em>，进入<em>电源选项</em>，或者在地址栏输入 <strong>控制面板\所有控制面板项\电源选项</strong>，就会发现多了一个<strong>卓越性能</strong>选项，开启它即可。</li>
-</ul>
-<img src="/dian-nao/2018/10/06/dian-nao-kai-qi-zhuo-yue-xing-neng/dian-nao-kai-qi-zhuo-yue-xing-neng/XSL_2018-10-06_13-03-53.png"> 
-<p>###以下是几个模式对比：</p>
-<p>1.卓越模式：</p>
-<img src="/dian-nao/2018/10/06/dian-nao-kai-qi-zhuo-yue-xing-neng/dian-nao-kai-qi-zhuo-yue-xing-neng/XSL_2018-10-06_13-07-47.png">
-<p>2.性能模式：</p>
-<img src="/dian-nao/2018/10/06/dian-nao-kai-qi-zhuo-yue-xing-neng/dian-nao-kai-qi-zhuo-yue-xing-neng/XSL_2018-10-06_13-08-46.png">
-<p>3.平衡模式：</p>
-<img src="/dian-nao/2018/10/06/dian-nao-kai-qi-zhuo-yue-xing-neng/dian-nao-kai-qi-zhuo-yue-xing-neng/XSL_2018-10-06_13-09-23.png">
-<p>4节能模式：</p>
-<img src="/dian-nao/2018/10/06/dian-nao-kai-qi-zhuo-yue-xing-neng/dian-nao-kai-qi-zhuo-yue-xing-neng/XSL_2018-10-06_13-10-21.png">
-<p><strong>开启卓越模式，注意散热。</strong></p>
+<h2 id="底层函数—–实现复位，写命令，写数据"><a href="#底层函数—–实现复位，写命令，写数据" class="headerlink" title="##底层函数—–实现复位，写命令，写数据"></a>##底层函数—–实现复位，写命令，写数据</h2><h2 id="屏幕初始化函数"><a href="#屏幕初始化函数" class="headerlink" title="##屏幕初始化函数"></a>##屏幕初始化函数</h2><p>##像素绘制</p>
 
                 </div>
                 <hr/>
@@ -278,7 +267,7 @@
                         <span class="reprint-tip">转载请注明本文地址: </span>
                         <a href="https://xiaosenluo.github.io" class="b-link-green">XIAOSENLUO</a>
                         <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                        <a href="/dian-nao/2018/10/06/dian-nao-kai-qi-zhuo-yue-xing-neng/dian-nao-kai-qi-zhuo-yue-xing-neng.html" class="b-link-green">电脑开启卓越性能</a>
+                        <a href="/enbedded-stm32/2018/10/15/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong.html" class="b-link-green">大创项目系列(一) OLED屏幕驱动</a>
                     </p>
                 </div>
             </div>
@@ -299,9 +288,9 @@
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'https://xiaosenluo.github.io/dian-nao/2018/10/06/dian-nao-kai-qi-zhuo-yue-xing-neng/dian-nao-kai-qi-zhuo-yue-xing-neng.html';
-        this.page.identifier = '/dian-nao/2018/10/06/dian-nao-kai-qi-zhuo-yue-xing-neng/dian-nao-kai-qi-zhuo-yue-xing-neng.html';
-        this.page.title = '电脑开启卓越性能';
+        this.page.url = 'https://xiaosenluo.github.io/enbedded-stm32/2018/10/15/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong.html';
+        this.page.identifier = '/enbedded-stm32/2018/10/15/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong.html';
+        this.page.title = '大创项目系列(一) OLED屏幕驱动';
     };
     let disqus_shortname = 'xiaosenluo';
 
@@ -323,27 +312,25 @@
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">上一篇</div>
             <div class="card">
-                <a href="/dian-nao/2018/10/07/da-jian-ssr/da-jian-ssr.html">
+                <a href="/dian-nao/2018/11/03/dian-nao-shi-yong-ssr-ke-xue-shang-wang/dian-nao-shi-yong-ssr-ke-xue-shang-wang.html">
                     <div class="card-image">
                         
-                        <img src="/dian-nao/2018/10/07/da-jian-ssr/da-jian-ssr/20171124183626.jpg" class="responsive-img" alt="搭建SSR">
+                        <img src="/dian-nao/2018/11/03/dian-nao-shi-yong-ssr-ke-xue-shang-wang/dian-nao-shi-yong-ssr-ke-xue-shang-wang/youtube.png" class="responsive-img" alt="电脑使用SSR科学上网">
                         
-                        <span class="card-title">搭建SSR</span>
+                        <span class="card-title">电脑使用SSR科学上网</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">搭建SSR教程
-记录一下教程，以免找不着。
+                    <div class="summary">电脑使用SSR科学上网软件准备
+ShadowsocksR-WIN
+浏览器代理插件
+浏览器 Chrome 或者 Yandex(推荐),（360，百度，UC等国产浏览器，请自行Google）
 
-购买海外VPS，我使用 vultr，注册购买：
-
-节点选 新加坡，系统选CentOS 6 64位，不要选CentOS 7（带防火墙），套餐按需即可，开启IPV6，付款即可。
-
-
-本地远程连接服务</div>
+步骤（以Yandex为例）
+将Shadowsock</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-07
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-02
                         </span>
                         <span class="publish-author">
                             
@@ -373,19 +360,19 @@
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">下一篇</div>
             <div class="card">
-                <a href="/embedded/2018/10/05/c51-lcd1602/c51-lcd1602.html">
+                <a href="/embedded/2018/10/12/qu-dong-zi-liao-bu-xiang-de-lcd12864-ye-jing-ping/qu-dong-zi-liao-bu-xiang-de-lcd12864-ye-jing-ping.html">
                     <div class="card-image">
                         
-                        <img src="/embedded/2018/10/05/c51-lcd1602/c51-lcd1602/739507439392664788.jpg" class="responsive-img" alt="C51-LCD1602">
+                        <img src="/embedded/2018/10/12/qu-dong-zi-liao-bu-xiang-de-lcd12864-ye-jing-ping/qu-dong-zi-liao-bu-xiang-de-lcd12864-ye-jing-ping/20180226131711.jpg" class="responsive-img" alt="驱动资料不详的LCD12864液晶屏">
                         
-                        <span class="card-title">C51-LCD1602</span>
+                        <span class="card-title">驱动资料不详的LCD12864液晶屏</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">STC12C5A60S2调试LCD1602国庆假期，闲来无事，突然想起我还有几片STC12C5A60S2 [datasheet]，还有一片STC12L5A60S2 [datasheet],对了，还有两片STC15FWA60S2 [datas</div>
+                    <div class="summary">关于用C51驱动资料不详的LCD12864液晶屏说来一片心酸泪，上学期大四毕业，新生广场有旧物买卖，闲逛一波，花了45块前买了一堆电子垃圾（手动滑稽），当时我还为此沾沾自喜，Arduino uno两块，Arduino mage一块，还有一堆</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-04
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-11
                             </span>
                         <span class="publish-author">
                             
