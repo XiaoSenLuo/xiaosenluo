@@ -218,95 +218,112 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
 
     
 
-<div id="category-cloud" class="container chip-container">
+<div id="tags" class="container chip-container">
     <div class="card">
         <div class="card-content">
-            <div class="tag-title center-align">文章分类</div>
+            <div class="tag-title center-align">文章标签</div>
             <div class="tag-chips">
                 
                 
-                
-                <a href="/categories/电脑/" title="--电脑: 3">
+                <a href="/tags/SSR/" title="--SSR: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9EBEA;">--电脑
-                        <span class="tag-length">3</span>
+                            data-tagname="--SSR" style="background-color: #F9EBEA;">--SSR
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Embedded/" title="--Embedded: 3">
+                <a href="/tags/C51/" title="--C51: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">--Embedded
-                        <span class="tag-length">3</span>
+                            data-tagname="--C51" style="background-color: #F5EEF8;">--C51
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Enbedded-STM32/" title="-Enbedded -STM32: 1">
+                <a href="/tags/STM32/" title="-STM32: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            style="background-color: #D5F5E3;">-Enbedded -STM32
+                             chip-default "
+                            data-tagname="-STM32" style="background-color: #D5F5E3;">-STM32
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
+                
+                <a href="/tags/C51-Keil/" title="--C51 --Keil: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            data-tagname="--C51 --Keil" style="background-color: #E8F8F5;">--C51 --Keil
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/none/" title="none: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="none" style="background-color: #FEF9E7;">none
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/电脑技巧/" title="--电脑技巧: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="--电脑技巧" style="background-color: #F8F9F9;">--电脑技巧
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
                 
             </div>
         </div>
     </div>
 </div>
 
-    
+    <div class="container">
+        
 
-    <article id="articles" class="container articles">
-        <div class="row tags-posts">
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/enbedded-stm32/2018/10/15/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong.html">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="大创项目系列(一) OLED屏幕驱动">
-                            
-                            <span class="card-title">大创项目系列(一) OLED屏幕驱动</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary">大创项目系列(一) OLED屏幕驱动很久之前查阅资料，驱动过0.96寸OLED屏幕，现在将其移植到我的大创项目作调试信息输出显示，不太想用u</div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-14
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Enbedded-STM32/" class="post-category" target="_blank">
-                                    -Enbedded -STM32
-                                </a>
+        <article>
+            <div class="row tags-posts">
+                
+                
+                <div class="article tag-post col s12 m6 l4" data-tags="--C51 --Keil" data-aos="fade-up">
+                    <div class="card">
+                        <a href="/embedded/2018/11/17/zai-keil-c51-zhong-qian-ru-hui-bian-dai-ma/zai-keil-c51-zhong-qian-ru-hui-bian-dai-ma.html">
+                            <div class="card-image tag-image">
                                 
                                 
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/STM32/" target="_blank">
-                            <span class="chip bg-color">-STM32</span>
+                                <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="在Keil C51中嵌入汇编代码">
+                                
+                                <span class="card-title">在Keil C51中嵌入汇编代码</span>
+                            </div>
                         </a>
-                        
+                        <div class="card-content article-content">
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-16
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/Embedded/" class="post-category" target="_blank">
+                                    --Embedded
+                                    </a>
+                                    
+                                    
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                    
                 </div>
+                
             </div>
-            
-        </div>
-    </article>
+        </article>
+    </div>
 </main>
 
 
