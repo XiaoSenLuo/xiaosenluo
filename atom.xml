@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xiaosenluo.github.io/"/>
-  <updated>2018-11-16T13:52:04.210Z</updated>
+  <updated>2019-04-23T13:16:26.152Z</updated>
   <id>https://xiaosenluo.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>眼图</title>
+    <link href="https://xiaosenluo.github.io/tong-xin-yuan-li/2019/04/24/yan-tu/yan-tu.html"/>
+    <id>https://xiaosenluo.github.io/tong-xin-yuan-li/2019/04/24/yan-tu/yan-tu.html</id>
+    <published>2019-04-23T20:50:11.000Z</published>
+    <updated>2019-04-23T13:16:26.152Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;眼图&quot;&gt;&lt;a href=&quot;#眼图&quot; class=&quot;headerlink&quot; title=&quot;眼图&quot;&gt;&lt;/a&gt;眼图&lt;/h1&gt;&lt;p&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="--通信原理" scheme="https://xiaosenluo.github.io/categories/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>在Keil C51中嵌入汇编代码</title>
