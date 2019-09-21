@@ -4,23 +4,44 @@
   
     
     <entry>
+      <title>考研记录(一) 开始</title>
+      <link href="/kao-yan/2019/09/22/kao-yan-ji-lu-yi-kai-shi/kao-yan-ji-lu-yi-kai-shi.html"/>
+      <url>/kao-yan/2019/09/22/kao-yan-ji-lu-yi-kai-shi/kao-yan-ji-lu-yi-kai-shi.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="。。。。。。考研加油。。。。。。"><a href="#。。。。。。考研加油。。。。。。" class="headerlink" title="。。。。。。考研加油。。。。。。"></a><strong>。。。。。。考研加油。。。。。。</strong></h1><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 考研 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>TRUESTUDIO使用Jlink下载程序</title>
-      <link href="/enbedded-stm32/2019/09/22/truestudio-shi-yong-jlink-xia-zai-cheng-xu/truestudio-shi-yong-jlink-xia-zai-cheng-xu.html"/>
-      <url>/enbedded-stm32/2019/09/22/truestudio-shi-yong-jlink-xia-zai-cheng-xu/truestudio-shi-yong-jlink-xia-zai-cheng-xu.html</url>
+      <link href="/enbedded/stm32/2019/09/22/truestudio-shi-yong-jlink-xia-zai-cheng-xu/truestudio-shi-yong-jlink-xia-zai-cheng-xu.html"/>
+      <url>/enbedded/stm32/2019/09/22/truestudio-shi-yong-jlink-xia-zai-cheng-xu/truestudio-shi-yong-jlink-xia-zai-cheng-xu.html</url>
       
         <content type="html"><![CDATA[<h1 id="TRUESTUDIO使用Jlink下载程序"><a href="#TRUESTUDIO使用Jlink下载程序" class="headerlink" title="TRUESTUDIO使用Jlink下载程序"></a><strong>TRUESTUDIO使用Jlink下载程序</strong></h1><ol><li>配置外部工具<br><img src="https://i.loli.net/2019/09/21/vFLElqkZQMcrT97.png" alt="Jlink外部工具配置"><br>之后配置<code>运行配置</code>,添加启动组，创建启动组并选择刚刚配置好的外部工具。具体的步骤可以参考<a href="http://blog.atollic.com/stm32cubeprogrammer-atollic-truestudio-for-stm32" target="_blank" rel="noopener">truestudio集成stm32cubeprogrammer</a>;</li></ol><p>同样的可以配置stlink作为外部工具使用，这样也可以下载程序到目标单片机，配置好运行配置，可以直接点击<code>运行</code>运行外部工具。看下图配置外部工具：</p><p><img src="https://i.loli.net/2019/09/21/zX7TlfZRKScY1w4.png" alt="st-link flash download"></p><p><img src="https://i.loli.net/2019/09/21/MGSPKyYvdwu4lc9.png" alt="stm32cubeprogrammer download"></p><p><img src="https://i.loli.net/2019/09/21/IlyzdiWNTKeXYgb.png" alt="stm32cubeprogrammer download"></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
       <categories>
           
-          <category> -Enbedded -STM32 </category>
+          <category> Enbedded </category>
+          
+          <category> STM32 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> -TRUESTDUDIO </tag>
+            <tag> TRUESTDUDIO </tag>
             
         </tags>
       
@@ -38,7 +59,7 @@
       
       <categories>
           
-          <category> --通信原理 </category>
+          <category> 通信原理 </category>
           
       </categories>
       
@@ -57,14 +78,16 @@
       
       <categories>
           
-          <category> --Embedded </category>
+          <category> Embedded </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> --C51 --Keil </tag>
+            <tag> C51 </tag>
+            
+            <tag> Keil </tag>
             
         </tags>
       
@@ -82,14 +105,14 @@
       
       <categories>
           
-          <category> --电脑 </category>
+          <category> 电脑 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> --SSR </tag>
+            <tag> SSR </tag>
             
         </tags>
       
@@ -99,22 +122,22 @@
     
     <entry>
       <title>大创项目系列(一) OLED屏幕驱动</title>
-      <link href="/enbedded-stm32/2018/10/15/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong.html"/>
-      <url>/enbedded-stm32/2018/10/15/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong.html</url>
+      <link href="/enbedded/2018/10/15/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong.html"/>
+      <url>/enbedded/2018/10/15/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong.html</url>
       
         <content type="html"><![CDATA[<h1 id="大创项目系列-一-OLED屏幕驱动"><a href="#大创项目系列-一-OLED屏幕驱动" class="headerlink" title="大创项目系列(一) OLED屏幕驱动"></a><strong>大创项目系列(一) OLED屏幕驱动</strong></h1><p>很久之前查阅资料，驱动过0.96寸OLED屏幕，现在将其移植到我的大创项目作调试信息输出显示，不太想用uart接口在电脑显示信息了，太浪费USB口了（第一次感觉到我的小本本USB口不够用）。</p><p>这个0.96寸OLED屏是使用7线制的，默认使用4线spi。接口定义如下：</p><ul><li>GND</li><li>VCC</li><li>D0(SPI_SCK)</li><li>D1(SPI_MOSI)</li><li>RES(屏幕复位)</li><li>DC(数据和命令控制管脚)</li><li>CS(设备片选)</li></ul><h2 id="底层函数—–实现复位，写命令，写数据"><a href="#底层函数—–实现复位，写命令，写数据" class="headerlink" title="##底层函数—–实现复位，写命令，写数据"></a>##底层函数—–实现复位，写命令，写数据</h2><h2 id="屏幕初始化函数"><a href="#屏幕初始化函数" class="headerlink" title="##屏幕初始化函数"></a>##屏幕初始化函数</h2><p>##像素绘制</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
       <categories>
           
-          <category> -Enbedded -STM32 </category>
+          <category> Enbedded </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> -STM32 </tag>
+            <tag> STM32 </tag>
             
         </tags>
       
@@ -132,14 +155,14 @@
       
       <categories>
           
-          <category> --Embedded </category>
+          <category> Embedded </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> --C51 </tag>
+            <tag> C51 </tag>
             
         </tags>
       
@@ -157,14 +180,14 @@
       
       <categories>
           
-          <category> --电脑 </category>
+          <category> 电脑 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> --SSR </tag>
+            <tag> SSR </tag>
             
         </tags>
       
@@ -182,14 +205,14 @@
       
       <categories>
           
-          <category> --电脑 </category>
+          <category> 电脑 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> --电脑技巧 </tag>
+            <tag> 电脑技巧 </tag>
             
         </tags>
       
@@ -207,14 +230,14 @@
       
       <categories>
           
-          <category> --Embedded </category>
+          <category> Embedded </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> --C51 </tag>
+            <tag> C51 </tag>
             
         </tags>
       

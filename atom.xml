@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xiaosenluo.github.io/"/>
-  <updated>2019-09-21T15:20:16.476Z</updated>
+  <updated>2019-09-21T16:01:07.582Z</updated>
   <id>https://xiaosenluo.github.io/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>考研记录(一) 开始</title>
+    <link href="https://xiaosenluo.github.io/kao-yan/2019/09/22/kao-yan-ji-lu-yi-kai-shi/kao-yan-ji-lu-yi-kai-shi.html"/>
+    <id>https://xiaosenluo.github.io/kao-yan/2019/09/22/kao-yan-ji-lu-yi-kai-shi/kao-yan-ji-lu-yi-kai-shi.html</id>
+    <published>2019-09-21T23:48:58.000Z</published>
+    <updated>2019-09-21T16:01:07.582Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;。。。。。。考研加油。。。。。。&quot;&gt;&lt;a href=&quot;#。。。。。。考研加油。。。。。。&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="考研" scheme="https://xiaosenluo.github.io/categories/%E8%80%83%E7%A0%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>TRUESTUDIO使用Jlink下载程序</title>
-    <link href="https://xiaosenluo.github.io/enbedded-stm32/2019/09/22/truestudio-shi-yong-jlink-xia-zai-cheng-xu/truestudio-shi-yong-jlink-xia-zai-cheng-xu.html"/>
-    <id>https://xiaosenluo.github.io/enbedded-stm32/2019/09/22/truestudio-shi-yong-jlink-xia-zai-cheng-xu/truestudio-shi-yong-jlink-xia-zai-cheng-xu.html</id>
+    <link href="https://xiaosenluo.github.io/enbedded/stm32/2019/09/22/truestudio-shi-yong-jlink-xia-zai-cheng-xu/truestudio-shi-yong-jlink-xia-zai-cheng-xu.html"/>
+    <id>https://xiaosenluo.github.io/enbedded/stm32/2019/09/22/truestudio-shi-yong-jlink-xia-zai-cheng-xu/truestudio-shi-yong-jlink-xia-zai-cheng-xu.html</id>
     <published>2019-09-21T22:42:26.000Z</published>
-    <updated>2019-09-21T15:20:16.476Z</updated>
+    <updated>2019-09-21T16:05:21.420Z</updated>
     
     <summary type="html">
     
@@ -35,10 +59,12 @@
     
     </summary>
     
-      <category term="-Enbedded -STM32" scheme="https://xiaosenluo.github.io/categories/Enbedded-STM32/"/>
+      <category term="Enbedded" scheme="https://xiaosenluo.github.io/categories/Enbedded/"/>
+    
+      <category term="STM32" scheme="https://xiaosenluo.github.io/categories/Enbedded/STM32/"/>
     
     
-      <category term="-TRUESTDUDIO" scheme="https://xiaosenluo.github.io/tags/TRUESTDUDIO/"/>
+      <category term="TRUESTDUDIO" scheme="https://xiaosenluo.github.io/tags/TRUESTDUDIO/"/>
     
   </entry>
   
@@ -47,7 +73,7 @@
     <link href="https://xiaosenluo.github.io/tong-xin-yuan-li/2019/04/24/yan-tu/yan-tu.html"/>
     <id>https://xiaosenluo.github.io/tong-xin-yuan-li/2019/04/24/yan-tu/yan-tu.html</id>
     <published>2019-04-23T20:50:11.000Z</published>
-    <updated>2019-04-23T13:16:26.152Z</updated>
+    <updated>2019-09-21T16:00:50.615Z</updated>
     
     <summary type="html">
     
@@ -61,7 +87,7 @@
     
     </summary>
     
-      <category term="--通信原理" scheme="https://xiaosenluo.github.io/categories/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86/"/>
+      <category term="通信原理" scheme="https://xiaosenluo.github.io/categories/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86/"/>
     
     
   </entry>
@@ -71,7 +97,7 @@
     <link href="https://xiaosenluo.github.io/embedded/2018/11/17/zai-keil-c51-zhong-qian-ru-hui-bian-dai-ma/zai-keil-c51-zhong-qian-ru-hui-bian-dai-ma.html"/>
     <id>https://xiaosenluo.github.io/embedded/2018/11/17/zai-keil-c51-zhong-qian-ru-hui-bian-dai-ma/zai-keil-c51-zhong-qian-ru-hui-bian-dai-ma.html</id>
     <published>2018-11-16T21:25:07.000Z</published>
-    <updated>2018-11-16T13:52:04.210Z</updated>
+    <updated>2019-09-21T16:02:58.454Z</updated>
     
     <summary type="html">
     
@@ -85,10 +111,12 @@
     
     </summary>
     
-      <category term="--Embedded" scheme="https://xiaosenluo.github.io/categories/Embedded/"/>
+      <category term="Embedded" scheme="https://xiaosenluo.github.io/categories/Embedded/"/>
     
     
-      <category term="--C51 --Keil" scheme="https://xiaosenluo.github.io/tags/C51-Keil/"/>
+      <category term="C51" scheme="https://xiaosenluo.github.io/tags/C51/"/>
+    
+      <category term="Keil" scheme="https://xiaosenluo.github.io/tags/Keil/"/>
     
   </entry>
   
@@ -97,7 +125,7 @@
     <link href="https://xiaosenluo.github.io/dian-nao/2018/11/03/dian-nao-shi-yong-ssr-ke-xue-shang-wang/dian-nao-shi-yong-ssr-ke-xue-shang-wang.html"/>
     <id>https://xiaosenluo.github.io/dian-nao/2018/11/03/dian-nao-shi-yong-ssr-ke-xue-shang-wang/dian-nao-shi-yong-ssr-ke-xue-shang-wang.html</id>
     <published>2018-11-02T22:02:02.000Z</published>
-    <updated>2018-11-02T15:32:46.718Z</updated>
+    <updated>2019-09-21T16:02:22.907Z</updated>
     
     <summary type="html">
     
@@ -111,19 +139,19 @@
     
     </summary>
     
-      <category term="--电脑" scheme="https://xiaosenluo.github.io/categories/%E7%94%B5%E8%84%91/"/>
+      <category term="电脑" scheme="https://xiaosenluo.github.io/categories/%E7%94%B5%E8%84%91/"/>
     
     
-      <category term="--SSR" scheme="https://xiaosenluo.github.io/tags/SSR/"/>
+      <category term="SSR" scheme="https://xiaosenluo.github.io/tags/SSR/"/>
     
   </entry>
   
   <entry>
     <title>大创项目系列(一) OLED屏幕驱动</title>
-    <link href="https://xiaosenluo.github.io/enbedded-stm32/2018/10/15/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong.html"/>
-    <id>https://xiaosenluo.github.io/enbedded-stm32/2018/10/15/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong.html</id>
+    <link href="https://xiaosenluo.github.io/enbedded/2018/10/15/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong.html"/>
+    <id>https://xiaosenluo.github.io/enbedded/2018/10/15/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong.html</id>
     <published>2018-10-14T18:31:11.000Z</published>
-    <updated>2018-10-14T10:54:04.497Z</updated>
+    <updated>2019-09-21T16:02:02.502Z</updated>
     
     <summary type="html">
     
@@ -137,10 +165,10 @@
     
     </summary>
     
-      <category term="-Enbedded -STM32" scheme="https://xiaosenluo.github.io/categories/Enbedded-STM32/"/>
+      <category term="Enbedded" scheme="https://xiaosenluo.github.io/categories/Enbedded/"/>
     
     
-      <category term="-STM32" scheme="https://xiaosenluo.github.io/tags/STM32/"/>
+      <category term="STM32" scheme="https://xiaosenluo.github.io/tags/STM32/"/>
     
   </entry>
   
@@ -149,7 +177,7 @@
     <link href="https://xiaosenluo.github.io/embedded/2018/10/12/qu-dong-zi-liao-bu-xiang-de-lcd12864-ye-jing-ping/qu-dong-zi-liao-bu-xiang-de-lcd12864-ye-jing-ping.html"/>
     <id>https://xiaosenluo.github.io/embedded/2018/10/12/qu-dong-zi-liao-bu-xiang-de-lcd12864-ye-jing-ping/qu-dong-zi-liao-bu-xiang-de-lcd12864-ye-jing-ping.html</id>
     <published>2018-10-11T21:34:54.000Z</published>
-    <updated>2018-10-13T07:09:30.358Z</updated>
+    <updated>2019-09-21T16:01:47.232Z</updated>
     
     <summary type="html">
     
@@ -163,10 +191,10 @@
     
     </summary>
     
-      <category term="--Embedded" scheme="https://xiaosenluo.github.io/categories/Embedded/"/>
+      <category term="Embedded" scheme="https://xiaosenluo.github.io/categories/Embedded/"/>
     
     
-      <category term="--C51" scheme="https://xiaosenluo.github.io/tags/C51/"/>
+      <category term="C51" scheme="https://xiaosenluo.github.io/tags/C51/"/>
     
   </entry>
   
@@ -175,7 +203,7 @@
     <link href="https://xiaosenluo.github.io/dian-nao/2018/10/07/da-jian-ssr/da-jian-ssr.html"/>
     <id>https://xiaosenluo.github.io/dian-nao/2018/10/07/da-jian-ssr/da-jian-ssr.html</id>
     <published>2018-10-07T13:43:15.000Z</published>
-    <updated>2018-11-02T13:57:22.021Z</updated>
+    <updated>2019-09-21T16:01:22.369Z</updated>
     
     <summary type="html">
     
@@ -192,10 +220,10 @@
     
     </summary>
     
-      <category term="--电脑" scheme="https://xiaosenluo.github.io/categories/%E7%94%B5%E8%84%91/"/>
+      <category term="电脑" scheme="https://xiaosenluo.github.io/categories/%E7%94%B5%E8%84%91/"/>
     
     
-      <category term="--SSR" scheme="https://xiaosenluo.github.io/tags/SSR/"/>
+      <category term="SSR" scheme="https://xiaosenluo.github.io/tags/SSR/"/>
     
   </entry>
   
@@ -204,7 +232,7 @@
     <link href="https://xiaosenluo.github.io/dian-nao/2018/10/06/dian-nao-kai-qi-zhuo-yue-xing-neng/dian-nao-kai-qi-zhuo-yue-xing-neng.html"/>
     <id>https://xiaosenluo.github.io/dian-nao/2018/10/06/dian-nao-kai-qi-zhuo-yue-xing-neng/dian-nao-kai-qi-zhuo-yue-xing-neng.html</id>
     <published>2018-10-06T12:34:39.000Z</published>
-    <updated>2018-10-07T07:01:33.555Z</updated>
+    <updated>2019-09-21T16:02:50.411Z</updated>
     
     <summary type="html">
     
@@ -218,10 +246,10 @@
     
     </summary>
     
-      <category term="--电脑" scheme="https://xiaosenluo.github.io/categories/%E7%94%B5%E8%84%91/"/>
+      <category term="电脑" scheme="https://xiaosenluo.github.io/categories/%E7%94%B5%E8%84%91/"/>
     
     
-      <category term="--电脑技巧" scheme="https://xiaosenluo.github.io/tags/%E7%94%B5%E8%84%91%E6%8A%80%E5%B7%A7/"/>
+      <category term="电脑技巧" scheme="https://xiaosenluo.github.io/tags/%E7%94%B5%E8%84%91%E6%8A%80%E5%B7%A7/"/>
     
   </entry>
   
@@ -230,7 +258,7 @@
     <link href="https://xiaosenluo.github.io/embedded/2018/10/05/c51-lcd1602/c51-lcd1602.html"/>
     <id>https://xiaosenluo.github.io/embedded/2018/10/05/c51-lcd1602/c51-lcd1602.html</id>
     <published>2018-10-04T22:05:56.000Z</published>
-    <updated>2018-10-13T07:01:16.660Z</updated>
+    <updated>2019-09-21T16:01:11.166Z</updated>
     
     <summary type="html">
     
@@ -244,10 +272,10 @@
     
     </summary>
     
-      <category term="--Embedded" scheme="https://xiaosenluo.github.io/categories/Embedded/"/>
+      <category term="Embedded" scheme="https://xiaosenluo.github.io/categories/Embedded/"/>
     
     
-      <category term="--C51" scheme="https://xiaosenluo.github.io/tags/C51/"/>
+      <category term="C51" scheme="https://xiaosenluo.github.io/tags/C51/"/>
     
   </entry>
   
