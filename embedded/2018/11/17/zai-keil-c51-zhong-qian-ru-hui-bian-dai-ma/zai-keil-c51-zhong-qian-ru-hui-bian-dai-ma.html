@@ -361,7 +361,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        103
+                        155
                     </div>
                     
 
@@ -402,7 +402,25 @@
 <img src="/embedded/2018/11/17/zai-keil-c51-zhong-qian-ru-hui-bian-dai-ma/zai-keil-c51-zhong-qian-ru-hui-bian-dai-ma/XSL_2018-11-16_21-38-59.png" width="300" height="200">
 <img src="/embedded/2018/11/17/zai-keil-c51-zhong-qian-ru-hui-bian-dai-ma/zai-keil-c51-zhong-qian-ru-hui-bian-dai-ma/XSL_2018-11-16_21-39-39.png" width="300" height="200">
 <p><a href="http://www.keil.com/support/docs/614.htm" target="_blank" rel="noopener">更多详情请点这</a></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -611,7 +629,10 @@
                     <div class="summary block-with-text">眼图看这篇文章
 或者
 [本地下载]
-</div>
+
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dat</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-23
@@ -832,7 +853,7 @@ ShadowsocksR-WIN
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">3k</span>
+                <span class="white-color">3.6k</span>
             
 
             

@@ -8,7 +8,10 @@
     <meta name="description" content="眼图看这篇文章
 或者
 [本地下载]
-">
+
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+          .forEach(el =&gt; {
+            if (!el.dat">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -350,7 +353,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        13
+                        65
                     </div>
                     
 
@@ -376,7 +379,25 @@
                 <h1 id="眼图"><a href="#眼图" class="headerlink" title="眼图"></a>眼图</h1><p><a href="http://bfiles.chinaaet.com/justlxy/blog/20171120/1000019445-6364677248942560424241589.pdf" target="_blank" rel="noopener">看这篇文章</a></p>
 <p>或者</p>
 <a href="/tong-xin-yuan-li/2019/04/24/yan-tu/yan-tu/1000019445-6364677248942560424241589.pdf" title="[本地下载]">[本地下载]</a>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -569,41 +590,47 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/tong-xin-yuan-li/2019/04/24/yan-tu/yan-tu.html">
+                <a href="/enbedded-stm32/2019/09/22/truestudio-shi-yong-jlink-xia-zai-cheng-xu/truestudio-shi-yong-jlink-xia-zai-cheng-xu.html">
                     <div class="card-image">
                         
-                        <img src="/tong-xin-yuan-li/2019/04/24/yan-tu/yan-tu/a3dc5p9638779752352.jpeg" class="responsive-img" alt="眼图">
+                        <img src="https://i.loli.net/2019/09/21/vFLElqkZQMcrT97.png" class="responsive-img" alt="TRUESTUDIO使用Jlink下载程序">
                         
-                        <span class="card-title">眼图</span>
+                        <span class="card-title">TRUESTUDIO使用Jlink下载程序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary block-with-text">眼图看这篇文章
-或者
-[本地下载]
-</div>
+                    <div class="summary block-with-text">TRUESTUDIO使用Jlink下载程序
+配置外部工具之后配置运行配置,添加启动组，创建启动组并选择刚刚配置好的外部工具。具体的步骤可以参考truestudio集成stm32cubeprogrammer;
+
+同样的可以配置stlink作为</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-23
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-21
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/通信原理/" class="post-category" target="_blank">
-                                    --通信原理
+                            <a href="/categories/Enbedded-STM32/" class="post-category" target="_blank">
+                                    -Enbedded -STM32
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/TRUESTDUDIO/" target="_blank">
+                        <span class="chip bg-color">-TRUESTDUDIO</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -813,7 +840,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">3k</span>
+                <span class="white-color">3.6k</span>
             
 
             

@@ -351,7 +351,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        872
+                        924
                     </div>
                     
 
@@ -602,7 +602,25 @@
 <p><strong><a href="embedded/2018/10/05/c51-lcd1602/c51-lcd1602/code.zip">源码文件</a></strong>    </p>
 <a href="/embedded/2018/10/05/c51-lcd1602/c51-lcd1602/code.zip" title="源码文件">源码文件</a>
 <p>2018/10/6 22:17:54 2018/10/6 22:17:55 </p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -860,7 +878,8 @@
 这是我的第一篇博客，昨晚和林式说了之后，我问她,你猜我要写什么?她说，这是我的第一篇博客，应该记录一些有意义的事。其实我早已想好。
 我之前在Aigirl看到一篇连载，《我想做能在你的葬礼上描述你一生的人》。有个评论：
 
-</div>
+
+ </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-03
@@ -1035,7 +1054,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">3k</span>
+                <span class="white-color">3.6k</span>
             
 
             

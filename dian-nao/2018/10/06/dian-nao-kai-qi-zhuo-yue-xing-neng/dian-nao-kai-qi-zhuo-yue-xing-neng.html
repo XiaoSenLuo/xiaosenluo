@@ -353,7 +353,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        213
+                        265
                     </div>
                     
 
@@ -399,7 +399,25 @@
 <p>4节能模式：</p>
 <img src="/dian-nao/2018/10/06/dian-nao-kai-qi-zhuo-yue-xing-neng/dian-nao-kai-qi-zhuo-yue-xing-neng/XSL_2018-10-06_13-10-21.png">
 <p><strong>开启卓越模式，注意散热。</strong></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -836,7 +854,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">3k</span>
+                <span class="white-color">3.6k</span>
             
 
             
