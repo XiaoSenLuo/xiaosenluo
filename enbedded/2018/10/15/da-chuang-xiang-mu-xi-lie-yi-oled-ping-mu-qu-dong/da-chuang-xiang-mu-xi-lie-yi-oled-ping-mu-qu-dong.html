@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="大创项目系列(一) OLED屏幕驱动, 嵌入式, Java, Blogs, 编程, 通信">
+    <meta name="keywords" content="大创项目系列(一) OLED屏幕驱动, 嵌入式, Java, Blogs, 编程, 通信, 学习">
     <meta name="description" content="大创项目系列(一) OLED屏幕驱动很久之前查阅资料，驱动过0.96寸OLED屏幕，现在将其移植到我的大创项目作调试信息输出显示，不太想用uart接口在电脑显示信息了，太浪费USB口了（第一次感觉到我的小本本USB口不够用）。
 这个0.96">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -612,12 +612,12 @@
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">电脑使用SSR科学上网软件准备
-ShadowsocksR-WIN
-浏览器代理插件
+
+
 浏览器 Chrome 或者 Yandex(推荐),（360，百度，UC等国产浏览器，请自行Google）
 
 步骤（以Yandex为例）
-将Shadowsock</div>
+将ShadowsocksR-4.7.0-win.7z解压至任意目录，</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-02
@@ -758,7 +758,7 @@ ShadowsocksR-WIN
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
             // headingsOffset: -205,
-            headingSelector: 'h2, h3, h4'
+            headingSelector: 'h2, h3, h4, h5'
         });
 
         // modify the toc link href to support Chinese.
@@ -770,7 +770,7 @@ ShadowsocksR-WIN
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -840,7 +840,7 @@ ShadowsocksR-WIN
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">3.7k</span>
+                <span class="white-color">4k</span>
             
 
             

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="TRUESTUDIO使用Jlink下载程序, 嵌入式, Java, Blogs, 编程, 通信">
+    <meta name="keywords" content="TRUESTUDIO使用Jlink下载程序, 嵌入式, Java, Blogs, 编程, 通信, 学习">
     <meta name="description" content="TRUESTUDIO使用Jlink下载程序
 配置外部工具之后配置运行配置,添加启动组，创建启动组并选择刚刚配置好的外部工具。具体的步骤可以参考truestudio集成stm32cubeprogrammer;
 
@@ -654,11 +654,11 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">眼图看这篇文章
 或者
-[本地下载]
+
 
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
-            if (!el.dat</div>
+            if (!el.dataset.s</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-23
@@ -747,7 +747,7 @@
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
             // headingsOffset: -205,
-            headingSelector: 'h2, h3, h4'
+            headingSelector: 'h2, h3, h4, h5'
         });
 
         // modify the toc link href to support Chinese.
@@ -759,7 +759,7 @@
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -829,7 +829,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">3.7k</span>
+                <span class="white-color">4k</span>
             
 
             

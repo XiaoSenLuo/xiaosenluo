@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="My First Blogs, 嵌入式, Java, Blogs, 编程, 通信">
+    <meta name="keywords" content="My First Blogs, 嵌入式, Java, Blogs, 编程, 通信, 学习">
     <meta name="description" content="一件有意义的事
 这是我的第一篇博客，昨晚和林式说了之后，我问她,你猜我要写什么?她说，这是我的第一篇博客，应该记录一些有意义的事。其实我早已想好。
 我之前在Aigirl看到一篇连载，《我想做能在你的葬礼上描述你一生的人》。有个评论：
@@ -742,7 +742,7 @@
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
             // headingsOffset: -205,
-            headingSelector: 'h2, h3, h4'
+            headingSelector: 'h2, h3, h4, h5'
         });
 
         // modify the toc link href to support Chinese.
@@ -754,7 +754,7 @@
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -824,7 +824,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">3.7k</span>
+                <span class="white-color">4k</span>
             
 
             

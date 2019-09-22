@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="电脑开启卓越性能, 嵌入式, Java, Blogs, 编程, 通信">
+    <meta name="keywords" content="电脑开启卓越性能, 嵌入式, Java, Blogs, 编程, 通信, 学习">
     <meta name="description" content="win10系统（版本号在1803以上）开启性能模式win10升级到1803后，微软将电源管理现在的“性能模式”等同于原先的“平衡模式”，所以想要更好的发挥电脑性能，就要开启隐藏的卓越模式。
 
 以“管理员身份”运行Windows shell。">
@@ -380,24 +380,24 @@
 <ul>
 <li>以“管理员身份”运行<em>Windows shell</em>。</li>
 </ul>
-<img src="/dian-nao/2018/10/06/dian-nao-kai-qi-zhuo-yue-xing-neng/dian-nao-kai-qi-zhuo-yue-xing-neng/XSL_2018-10-06_12-36-00.png">
+
 <ul>
 <li>输入命令 <strong>powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61</strong>，回车，等一会，就会提示开启卓越模式（序列号不同，我也不清楚怎么回事）了。</li>
 </ul>
-<img src="/dian-nao/2018/10/06/dian-nao-kai-qi-zhuo-yue-xing-neng/dian-nao-kai-qi-zhuo-yue-xing-neng/XSL_2018-10-06_12-38-26.png">
+
 <ul>
 <li>打开<em>控制面板</em>，进入<em>电源选项</em>，或者在地址栏输入 <strong>控制面板\所有控制面板项\电源选项</strong>，就会发现多了一个<strong>卓越性能</strong>选项，开启它即可。</li>
 </ul>
-<img src="/dian-nao/2018/10/06/dian-nao-kai-qi-zhuo-yue-xing-neng/dian-nao-kai-qi-zhuo-yue-xing-neng/XSL_2018-10-06_13-03-53.png"> 
+ 
 <p>###以下是几个模式对比：</p>
 <p>1.卓越模式：</p>
-<img src="/dian-nao/2018/10/06/dian-nao-kai-qi-zhuo-yue-xing-neng/dian-nao-kai-qi-zhuo-yue-xing-neng/XSL_2018-10-06_13-07-47.png">
+
 <p>2.性能模式：</p>
-<img src="/dian-nao/2018/10/06/dian-nao-kai-qi-zhuo-yue-xing-neng/dian-nao-kai-qi-zhuo-yue-xing-neng/XSL_2018-10-06_13-08-46.png">
+
 <p>3.平衡模式：</p>
-<img src="/dian-nao/2018/10/06/dian-nao-kai-qi-zhuo-yue-xing-neng/dian-nao-kai-qi-zhuo-yue-xing-neng/XSL_2018-10-06_13-09-23.png">
+
 <p>4节能模式：</p>
-<img src="/dian-nao/2018/10/06/dian-nao-kai-qi-zhuo-yue-xing-neng/dian-nao-kai-qi-zhuo-yue-xing-neng/XSL_2018-10-06_13-10-21.png">
+
 <p><strong>开启卓越模式，注意散热。</strong></p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -772,7 +772,7 @@
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
             // headingsOffset: -205,
-            headingSelector: 'h2, h3, h4'
+            headingSelector: 'h2, h3, h4, h5'
         });
 
         // modify the toc link href to support Chinese.
@@ -784,7 +784,7 @@
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -854,7 +854,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">3.7k</span>
+                <span class="white-color">4k</span>
             
 
             
