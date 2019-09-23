@@ -4,11 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="TRUESTUDIO使用Jlink下载程序, 嵌入式, Java, Blogs, 编程, 通信, 学习">
-    <meta name="description" content="TRUESTUDIO使用Jlink下载程序
-配置外部工具之后配置运行配置,添加启动组，创建启动组并选择刚刚配置好的外部工具。具体的步骤可以参考truestudio集成stm32cubeprogrammer;
-
-同样的可以配置stlink作为">
+    <meta name="keywords" content="大创项目系列(一) OLED屏幕驱动, 嵌入式, Java, Blogs, 编程, 通信, 学习">
+    <meta name="description" content="大创项目系列(一) OLED屏幕驱动很久之前查阅资料，驱动过0.96寸OLED屏幕，现在将其移植到我的大创项目作调试信息输出显示，不太想用uart接口在电脑显示信息了，太浪费USB口了（第一次感觉到我的小本本USB口不够用）。
+这个0.96">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>TRUESTUDIO使用Jlink下载程序 | XIAOSENLUO</title>
+    <title>大创项目系列(一) OLED屏幕驱动 | XIAOSENLUO</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -206,13 +204,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://i.loli.net/2019/09/21/vFLElqkZQMcrT97.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        TRUESTUDIO使用Jlink下载程序
+                        大创项目系列(一) OLED屏幕驱动
                     </div>
                 </div>
             </div>
@@ -323,8 +321,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/TRUESTDUDIO/" target="_blank">
-                                <span class="chip bg-color">TRUESTDUDIO</span>
+                            <a href="/tags/STM32/" target="_blank">
+                                <span class="chip bg-color">STM32</span>
                             </a>
                         
                     </div>
@@ -335,12 +333,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Enbedded/" class="post-category" target="_blank">
-                                Enbedded
-                            </a>
-                        
-                            <a href="/categories/Enbedded/STM32/" class="post-category" target="_blank">
-                                STM32
+                            <a href="/categories/Embedded/" class="post-category" target="_blank">
+                                Embedded
                             </a>
                         
                     </div>
@@ -351,14 +345,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-21
+                    2018-10-14
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        169
+                        214
                     </div>
                     
 
@@ -381,13 +375,18 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="TRUESTUDIO使用Jlink下载程序"><a href="#TRUESTUDIO使用Jlink下载程序" class="headerlink" title="TRUESTUDIO使用Jlink下载程序"></a><strong>TRUESTUDIO使用Jlink下载程序</strong></h1><ol>
-<li>配置外部工具<br><img src="https://i.loli.net/2019/09/21/vFLElqkZQMcrT97.png" alt="Jlink外部工具配置"><br>之后配置<code>运行配置</code>,添加启动组，创建启动组并选择刚刚配置好的外部工具。具体的步骤可以参考<a href="http://blog.atollic.com/stm32cubeprogrammer-atollic-truestudio-for-stm32" target="_blank" rel="noopener">truestudio集成stm32cubeprogrammer</a>;</li>
-</ol>
-<p>同样的可以配置stlink作为外部工具使用，这样也可以下载程序到目标单片机，配置好运行配置，可以直接点击<code>运行</code>运行外部工具。看下图配置外部工具：</p>
-<p><img src="https://i.loli.net/2019/09/21/zX7TlfZRKScY1w4.png" alt="st-link flash download"></p>
-<p><img src="https://i.loli.net/2019/09/21/MGSPKyYvdwu4lc9.png" alt="stm32cubeprogrammer download"></p>
-<p><img src="https://i.loli.net/2019/09/21/IlyzdiWNTKeXYgb.png" alt="stm32cubeprogrammer download"></p>
+                <h1 id="大创项目系列-一-OLED屏幕驱动"><a href="#大创项目系列-一-OLED屏幕驱动" class="headerlink" title="大创项目系列(一) OLED屏幕驱动"></a><strong>大创项目系列(一) OLED屏幕驱动</strong></h1><p>很久之前查阅资料，驱动过0.96寸OLED屏幕，现在将其移植到我的大创项目作调试信息输出显示，不太想用uart接口在电脑显示信息了，太浪费USB口了（第一次感觉到我的小本本USB口不够用）。</p>
+<p>这个0.96寸OLED屏是使用7线制的，默认使用4线spi。接口定义如下：</p>
+<ul>
+<li>GND</li>
+<li>VCC</li>
+<li>D0(SPI_SCK)</li>
+<li>D1(SPI_MOSI)</li>
+<li>RES(屏幕复位)</li>
+<li>DC(数据和命令控制管脚)</li>
+<li>CS(设备片选)</li>
+</ul>
+<h2 id="底层函数—–实现复位，写命令，写数据"><a href="#底层函数—–实现复位，写命令，写数据" class="headerlink" title="##底层函数—–实现复位，写命令，写数据"></a>##底层函数—–实现复位，写命令，写数据</h2><h2 id="屏幕初始化函数"><a href="#屏幕初始化函数" class="headerlink" title="##屏幕初始化函数"></a>##屏幕初始化函数</h2><p>##像素绘制</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -553,7 +552,7 @@
                     </span>
                     <a href="https://xiaosenluo.github.io" class="b-link-green">XIAOSENLUO</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/enbedded/stm32/2019/09/22/truestudio-shi-yong-jlink-xia-zai-cheng-xu/truestudio-shi-yong-jlink-xia-zai-cheng-xu.html" class="b-link-green">TRUESTUDIO使用Jlink下载程序</a>
+                    <a href="/embedded/2018/10/15/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong.html" class="b-link-green">大创项目系列(一) OLED屏幕驱动</a>
                 </p>
             </div>
         </div>
@@ -574,9 +573,9 @@
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'https://xiaosenluo.github.io/enbedded/stm32/2019/09/22/truestudio-shi-yong-jlink-xia-zai-cheng-xu/truestudio-shi-yong-jlink-xia-zai-cheng-xu.html';
-        this.page.identifier = '/enbedded/stm32/2019/09/22/truestudio-shi-yong-jlink-xia-zai-cheng-xu/truestudio-shi-yong-jlink-xia-zai-cheng-xu.html';
-        this.page.title = 'TRUESTUDIO使用Jlink下载程序';
+        this.page.url = 'https://xiaosenluo.github.io/embedded/2018/10/15/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong.html';
+        this.page.identifier = '/embedded/2018/10/15/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong.html';
+        this.page.title = '大创项目系列(一) OLED屏幕驱动';
     };
     let disqus_shortname = 'xiaosenluo';
 
@@ -603,35 +602,45 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/kao-yan/2019/09/22/kao-yan-ji-lu-yi-kai-shi/kao-yan-ji-lu-yi-kai-shi.html">
+                <a href="/dian-nao/2018/11/03/dian-nao-shi-yong-ssr-ke-xue-shang-wang/dian-nao-shi-yong-ssr-ke-xue-shang-wang.html">
                     <div class="card-image">
                         
+                        <img src="/dian-nao/2018/11/03/dian-nao-shi-yong-ssr-ke-xue-shang-wang/dian-nao-shi-yong-ssr-ke-xue-shang-wang/youtube.png" class="responsive-img" alt="电脑使用SSR科学上网">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="考研记录(一) 开始">
-                        
-                        <span class="card-title">考研记录(一) 开始</span>
+                        <span class="card-title">电脑使用SSR科学上网</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary block-with-text">。。。。。。考研加油。。。。。。
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.datas</div>
+                    <div class="summary block-with-text">电脑使用SSR科学上网软件准备
+
+
+浏览器 Chrome 或者 Yandex(推荐),（360，百度，UC等国产浏览器，请自行Google）
+
+步骤（以Yandex为例）
+将ShadowsocksR-4.7.0-win.7z解压至任意目录，</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-21
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-02
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/考研/" class="post-category" target="_blank">
-                                    考研
+                            <a href="/categories/电脑/" class="post-category" target="_blank">
+                                    电脑
                                 </a>
                             
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SSR/" target="_blank">
+                        <span class="chip bg-color">SSR</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -643,37 +652,39 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/tong-xin-yuan-li/2019/04/24/yan-tu/yan-tu.html">
+                <a href="/embedded/2018/10/12/qu-dong-zi-liao-bu-xiang-de-lcd12864-ye-jing-ping/qu-dong-zi-liao-bu-xiang-de-lcd12864-ye-jing-ping.html">
                     <div class="card-image">
                         
-                        <img src="/tong-xin-yuan-li/2019/04/24/yan-tu/yan-tu/a3dc5p9638779752352.jpeg" class="responsive-img" alt="眼图">
+                        <img src="/embedded/2018/10/12/qu-dong-zi-liao-bu-xiang-de-lcd12864-ye-jing-ping/qu-dong-zi-liao-bu-xiang-de-lcd12864-ye-jing-ping/20180226131711.jpg" class="responsive-img" alt="驱动资料不详的LCD12864液晶屏">
                         
-                        <span class="card-title">眼图</span>
+                        <span class="card-title">驱动资料不详的LCD12864液晶屏</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary block-with-text">眼图看这篇文章
-或者
-
-
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.s</div>
+                    <div class="summary block-with-text">关于用C51驱动资料不详的LCD12864液晶屏说来一片心酸泪，上学期大四毕业，新生广场有旧物买卖，闲逛一波，花了45块前买了一堆电子垃圾（手动滑稽），当时我还为此沾沾自喜，Arduino uno两块，Arduino mage一块，还有一堆</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-23
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-11
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/通信原理/" class="post-category" target="_blank">
-                                    通信原理
+                            <a href="/categories/Embedded/" class="post-category" target="_blank">
+                                    Embedded
                                 </a>
                             
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C51/" target="_blank">
+                        <span class="chip bg-color">C51</span>
+                    </a>
+                    
                 </div>
                 
             </div>

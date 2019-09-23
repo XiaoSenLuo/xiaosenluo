@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xiaosenluo.github.io/"/>
-  <updated>2019-09-23T05:35:30.815Z</updated>
+  <updated>2019-09-23T08:31:17.913Z</updated>
   <id>https://xiaosenluo.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://xiaosenluo.github.io/embedded/2019/09/23/ucos-iii-yi-zhi-dao-stm32f103c8t6/ucos-iii-yi-zhi-dao-stm32f103c8t6.html"/>
     <id>https://xiaosenluo.github.io/embedded/2019/09/23/ucos-iii-yi-zhi-dao-stm32f103c8t6/ucos-iii-yi-zhi-dao-stm32f103c8t6.html</id>
     <published>2019-09-23T10:17:53.000Z</published>
-    <updated>2019-09-23T05:35:30.815Z</updated>
+    <updated>2019-09-23T08:31:17.913Z</updated>
     
     <summary type="html">
     
@@ -94,10 +94,10 @@
   
   <entry>
     <title>TRUESTUDIO使用Jlink下载程序</title>
-    <link href="https://xiaosenluo.github.io/enbedded/stm32/2019/09/22/truestudio-shi-yong-jlink-xia-zai-cheng-xu/truestudio-shi-yong-jlink-xia-zai-cheng-xu.html"/>
-    <id>https://xiaosenluo.github.io/enbedded/stm32/2019/09/22/truestudio-shi-yong-jlink-xia-zai-cheng-xu/truestudio-shi-yong-jlink-xia-zai-cheng-xu.html</id>
+    <link href="https://xiaosenluo.github.io/embedded/2019/09/22/truestudio-shi-yong-jlink-xia-zai-cheng-xu/truestudio-shi-yong-jlink-xia-zai-cheng-xu.html"/>
+    <id>https://xiaosenluo.github.io/embedded/2019/09/22/truestudio-shi-yong-jlink-xia-zai-cheng-xu/truestudio-shi-yong-jlink-xia-zai-cheng-xu.html</id>
     <published>2019-09-21T22:42:26.000Z</published>
-    <updated>2019-09-21T16:05:21.420Z</updated>
+    <updated>2019-09-23T08:30:40.485Z</updated>
     
     <summary type="html">
     
@@ -111,10 +111,10 @@
     
     </summary>
     
-      <category term="Enbedded" scheme="https://xiaosenluo.github.io/categories/Enbedded/"/>
+      <category term="Embedded" scheme="https://xiaosenluo.github.io/categories/Embedded/"/>
     
-      <category term="STM32" scheme="https://xiaosenluo.github.io/categories/Enbedded/STM32/"/>
     
+      <category term="STM32" scheme="https://xiaosenluo.github.io/tags/STM32/"/>
     
       <category term="TRUESTDUDIO" scheme="https://xiaosenluo.github.io/tags/TRUESTDUDIO/"/>
     
@@ -200,10 +200,10 @@
   
   <entry>
     <title>大创项目系列(一) OLED屏幕驱动</title>
-    <link href="https://xiaosenluo.github.io/enbedded/2018/10/15/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong.html"/>
-    <id>https://xiaosenluo.github.io/enbedded/2018/10/15/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong.html</id>
+    <link href="https://xiaosenluo.github.io/embedded/2018/10/15/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong.html"/>
+    <id>https://xiaosenluo.github.io/embedded/2018/10/15/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong/da-chuang-xiang-mu-xi-lie-yi-oled-ping-mu-qu-dong.html</id>
     <published>2018-10-14T18:31:11.000Z</published>
-    <updated>2019-09-21T16:02:02.502Z</updated>
+    <updated>2019-09-23T08:29:46.381Z</updated>
     
     <summary type="html">
     
@@ -217,7 +217,7 @@
     
     </summary>
     
-      <category term="Enbedded" scheme="https://xiaosenluo.github.io/categories/Enbedded/"/>
+      <category term="Embedded" scheme="https://xiaosenluo.github.io/categories/Embedded/"/>
     
     
       <category term="STM32" scheme="https://xiaosenluo.github.io/tags/STM32/"/>
@@ -336,7 +336,7 @@
     <link href="https://xiaosenluo.github.io/uncategorized/2018/10/04/my-first-blogs/my-first-blogs.html"/>
     <id>https://xiaosenluo.github.io/uncategorized/2018/10/04/my-first-blogs/my-first-blogs.html</id>
     <published>2018-10-03T21:36:32.000Z</published>
-    <updated>2018-10-05T09:20:14.289Z</updated>
+    <updated>2019-09-23T08:30:52.699Z</updated>
     
     <summary type="html">
     

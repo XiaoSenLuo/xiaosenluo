@@ -348,24 +348,34 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>修改 <code>bsp.c</code>。与 <code>BSP</code> 相关的代码都可以注释掉，只保留与 <code>DWT</code> 相关的。</li>
-<li>修改 <code>aap.c</code>。将 <code>main.c</code> 关于 <code>void SystemClock_Config(void)</code> 的声明和定义复制到 <code>app.c</code> ;之后就可以删除 <code>main.c</code> 和 <code>main.h</code>。接下来开始修改初始化系统和硬件的代码了，容易踩坑也是这里。cubeIEDE生成的代码里，一开始就调用了 <code>HAL_Init()</code>，在这个函数中，调用了 <code>HAL_InitTick()</code>, 这个函数就是坑，原因在于这个函数初始化了Systemtick 也就是所说的滴答时钟，一旦初始化完成，滴答时钟就开始运行，产生定时中断，而这个中断被UCOS接管了(<code>OS_CPU_SysTickHandler()</code>)，这个函数体：<br><code>`</code>c<br>void  OS_CPU_SysTickHandler (void)<br>{<br>CPU_SR_ALLOC();<br>CPU_CRITICAL_ENTER();<br>OSIntNestingCtr++;                                      /<em> Tell uC/OS-III that we are starting an ISR             </em>/<br>CPU_CRITICAL_EXIT();</li>
+<li>修改 <code>aap.c</code>。将 <code>main.c</code> 关于 <code>void SystemClock_Config(void)</code> 的声明和定义复制到 <code>app.c</code> ;之后就可以删除 <code>main.c</code> 和 <code>main.h</code>。接下来开始修改初始化系统和硬件的代码了，容易踩坑也是这里。cubeIEDE生成的代码里，一开始就调用了 <code>HAL_Init()</code>，在这个函数中，调用了 <code>HAL_InitTick()</code>, 这个函数就是坑，原因在于这个函数初始化了Systemtick 也就是所说的滴答时钟，一旦初始化完成，滴答时钟就开始运行，产生定时中断，而这个中断被UCOS接管了(<code>OS_CPU_SysTickHandler()</code>)，这个函数体：</li>
 </ul>
-<p>OSTimeTick();                                           /<em> Call  uC/OS-III’s OSTimeTick()                          </em>/</p>
-<p>OSIntExit();                                            /<em> Tell uC/OS-III that we are leaving the ISR             </em>/<br>}</p>
-<pre><code>可以看到,这个函数对 `OSIntNestingCtr` 进行了 `++` 操作，而在 `OSInit()` 函数里调用了 `OS_IdleTaskInit()`，`OS_IdleTaskInit()`函数调用 `OSTaskCreate()` 创建一个空闲任务，而在 `OSTaskCreate()` 里有这样的语句：
-```c
-#if OS_CFG_CALLED_FROM_ISR_CHK_EN &gt; 0u
-if (OSIntNestingCtr &gt; (OS_NESTING_CTR)0) {              /* ---------- CANNOT CREATE A TASK FROM AN ISR ---------- */
- *p_err = OS_ERR_TASK_CREATE_ISR;
-  return;
-}
-#endif
-</code></pre><p>明显的 <code>OSIntNestingCtr</code> 大于 <code>0</code>,所以 <code>OSInit()</code>会失败。解决办法有两个(我采用第一种)：</p>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">void</span>  <span class="token function">OS_CPU_SysTickHandler</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+<span class="token function">CPU_SR_ALLOC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">CPU_CRITICAL_ENTER</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+OSIntNestingCtr<span class="token operator">++</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* Tell uC/OS-III that we are starting an ISR  */</span>
+<span class="token function">CPU_CRITICAL_EXIT</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">OSTimeTick</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* Call  uC/OS-III's OSTimeTick()    */</span>
+
+<span class="token function">OSIntExit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* Tell uC/OS-III that we are leaving the ISR  */</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<p>可以看到,这个函数对 <code>OSIntNestingCtr</code> 进行了 <code>++</code> 操作，而在 <code>OSInit()</code> 函数里调用了 <code>OS_IdleTaskInit()</code>，<code>OS_IdleTaskInit()</code>函数调用 <code>OSTaskCreate()</code> 创建一个空闲任务，而在 <code>OSTaskCreate()</code> 里有这样的语句：</p>
+<pre class="line-numbers language-c"><code class="language-c">  <span class="token macro property">#<span class="token directive keyword">if</span> OS_CFG_CALLED_FROM_ISR_CHK_EN > 0u</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>OSIntNestingCtr <span class="token operator">></span> <span class="token punctuation">(</span>OS_NESTING_CTR<span class="token punctuation">)</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">/*  ---------- CANNOT CREATE A TASK FROM AN ISR ---------- */</span>
+    <span class="token operator">*</span>p_err <span class="token operator">=</span> OS_ERR_TASK_CREATE_ISR<span class="token punctuation">;</span>
+     <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token macro property">#<span class="token directive keyword">endif</span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>明显的 <code>OSIntNestingCtr</code> 大于 <code>0</code>,所以 <code>OSInit()</code>会失败。解决办法有两个(我采用第一种)：</p>
 <ul>
 <li>注释掉 <code>HAL_Init()</code> 里面的 <code>HAL_InitTick()</code></li>
 <li>先调用 <code>OSInit()</code> 后调用 <code>HAL_Init()</code>   </li>
-</ul>
-</li>
 </ul>
 <p>void SystemClock_Config(void)这个函数最终会初始化SystemTick，所以 <code>void  OS_CPU_SysTickInit (CPU_INT32U  cnts)</code> 可以不用调用。<br>最终初始化程序为：</p>
 <pre class="line-numbers language-c"><code class="language-c"> <span class="token keyword">int</span>  <span class="token function">main</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
