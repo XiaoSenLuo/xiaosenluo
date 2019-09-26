@@ -351,14 +351,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        920
+                        321
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        4 分
+                        1 分
                     </div>
                     
                 
@@ -395,59 +395,59 @@
 <p>4.D0-D7：数据输入输出端</p>
 </li>
 <li><p><strong>LCD1602操作时序图：</strong></p>
-
+<img src="https://s2.ax1x.com/2019/09/24/uAnzee.png">
 </li>
 <li><p><strong>底层函数</strong></p>
 <p>1.使能函数(必须使能LCD1602才能执行命令)  </p>
 </li>
 </ul>
-<pre class="line-numbers language-c"><code class="language-c">    <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">LCD_pulseEnable</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">{</span>    
-        LCD_EN<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token function">Delay_us</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        LCD_EN<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token function">Delay_us</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        LCD_EN<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token function">Delay_us</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">//    LCD_EN=1;</span>
-    <span class="token punctuation">}</span>
+<pre class="line-numbers language-lang-c"><code class="language-lang-c">    static void LCD_pulseEnable(void){    
+        LCD_EN=0;
+        Delay_us(10);
+        LCD_EN=1;
+        Delay_us(10);
+        LCD_EN=0;
+        Delay_us(10);
+    //    LCD_EN=1;
+    }
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p> 2.IO口操作函数</p>
-<pre class="line-numbers language-c"><code class="language-c">    <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">LCD_write4bits</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span> value<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        DP<span class="token operator">=</span>value<span class="token operator">&amp;</span><span class="token number">0xf0</span><span class="token punctuation">;</span>
-        <span class="token function">LCD_pulseEnable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">LCD_write8bits</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span> value<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        DP<span class="token operator">=</span>value<span class="token operator">&amp;</span><span class="token number">0xff</span><span class="token punctuation">;</span>
-        <span class="token function">LCD_pulseEnable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+<pre class="line-numbers language-lang-c"><code class="language-lang-c">    static void LCD_write4bits(unsigned char value){
+        DP=value&0xf0;
+        LCD_pulseEnable();
+    }
+    static void LCD_write8bits(unsigned char value){
+        DP=value&0xff;
+        LCD_pulseEnable();
+    }
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p> 3.数据输出函数</p>
-<pre class="line-numbers language-c"><code class="language-c">    <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">LCD_send</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span> value<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> <span class="token keyword">char</span> mode<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        LCD_RW<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token function">Delay_us</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        LCD_RS<span class="token operator">=</span>mode<span class="token punctuation">;</span>
-        LCD_RW<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>displayFunction<span class="token operator">&amp;</span>LCD_8BITMODE<span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token function">LCD_write8bits</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
-            <span class="token function">LCD_write4bits</span><span class="token punctuation">(</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token function">LCD_write4bits</span><span class="token punctuation">(</span>value<span class="token operator">&lt;&lt;</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        LCD_RW<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
-        LCD_RS<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">!</span>mode<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+<pre class="line-numbers language-lang-c"><code class="language-lang-c">    static void LCD_send(unsigned char value, unsigned char mode){
+        LCD_RW=1;
+        Delay_us(10);
+        LCD_RS=mode;
+        LCD_RW=0;
+        if(displayFunction&LCD_8BITMODE){
+            LCD_write8bits(value);
+        }else{
+            LCD_write4bits((value));
+            LCD_write4bits(value<<4);
+        }
+        LCD_RW=1;
+        LCD_RS=(!mode);
+    }
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p> 4.写命令</p>
-<pre class="line-numbers language-c"><code class="language-c">    <span class="token keyword">void</span> <span class="token function">LCD_Command</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span> value<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token function">LCD_send</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> W_COMMAND<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>    
+<pre class="line-numbers language-lang-c"><code class="language-lang-c">    void LCD_Command(unsigned char value){
+        LCD_send(value, W_COMMAND);
+    }
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p> 5.写数据</p>
-<pre class="line-numbers language-c"><code class="language-c">    <span class="token keyword">char</span> <span class="token function">LCD_Write</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span> value<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<pre class="line-numbers language-lang-c"><code class="language-lang-c">    char LCD_Write(unsigned char value){
 
-        <span class="token function">LCD_send</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> W_DATA<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>    
+        LCD_send(value, W_DATA);
+        return 1;
+    }
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><p><strong>硬件抽象层函数</strong></p>
@@ -457,150 +457,150 @@
 </ul>
 </li>
 </ul>
-<pre class="line-numbers language-c"><code class="language-c">        <span class="token keyword">void</span> <span class="token function">LCD_Begin</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span> cols<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> <span class="token keyword">char</span> lines<span class="token punctuation">)</span><span class="token punctuation">{</span>
-          <span class="token keyword">unsigned</span> <span class="token keyword">char</span> dotsize<span class="token operator">=</span>LCD_5x8DOTS<span class="token punctuation">;</span>
-            <span class="token function">pinInit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> PIN_MODE_OP<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token function">portInit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token function">portInit</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>lines <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            displayFunction <span class="token operator">|</span><span class="token operator">=</span> LCD_2LINE<span class="token punctuation">;</span>
-          <span class="token punctuation">}</span>
-          numLines <span class="token operator">=</span> lines<span class="token punctuation">;</span>
-            lcdCol<span class="token operator">=</span>cols<span class="token punctuation">;</span>
-          <span class="token function">LCD_SetRowOffsets</span><span class="token punctuation">(</span><span class="token number">0x00</span><span class="token punctuation">,</span> <span class="token number">0x40</span><span class="token punctuation">,</span> <span class="token number">0x00</span> <span class="token operator">+</span> cols<span class="token punctuation">,</span> <span class="token number">0x40</span> <span class="token operator">+</span> cols<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<pre class="line-numbers language-lang-c"><code class="language-lang-c">        void LCD_Begin(unsigned char cols, unsigned char lines){
+          unsigned char dotsize=LCD_5x8DOTS;
+            pinInit(0, 0, PIN_MODE_OP);
+            portInit(1);
+            portInit(2);
+          if (lines > 1) {
+            displayFunction |= LCD_2LINE;
+          }
+          numLines = lines;
+            lcdCol=cols;
+          LCD_SetRowOffsets(0x00, 0x40, 0x00 + cols, 0x40 + cols);  
 
-          <span class="token comment" spellcheck="true">// for some 1 line displays you can select a 10 pixel high font</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>dotsize <span class="token operator">!=</span> LCD_5x8DOTS<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>lines <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            displayFunction <span class="token operator">|</span><span class="token operator">=</span> LCD_5x10DOTS<span class="token punctuation">;</span>
-          <span class="token punctuation">}</span>
-          <span class="token comment" spellcheck="true">// SEE PAGE 45/46 FOR INITIALIZATION SPECIFICATION!</span>
-          <span class="token comment" spellcheck="true">// according to datasheet, we need at least 40ms after power rises above 2.7V</span>
-          <span class="token comment" spellcheck="true">// before sending commands. Arduino can turn on way before 4.5V so we'll wait 50</span>
-          <span class="token function">Delay_ms</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-            LCD_RS<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-            LCD_EN<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-          LCD_RW<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-          <span class="token comment" spellcheck="true">//put the LCD into 4 bit or 8 bit mode</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>displayFunction <span class="token operator">&amp;</span> LCD_8BITMODE<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">// this is according to the hitachi HD44780 datasheet</span>
-            <span class="token comment" spellcheck="true">// figure 24, pg 46</span>
-            <span class="token comment" spellcheck="true">// we start in 8bit mode, try to set 4 bit mode</span>
-            <span class="token function">LCD_write4bits</span><span class="token punctuation">(</span><span class="token number">0x03</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//    delayMicroseconds(4500); // wait min 4.1ms</span>
-                <span class="token function">Delay_us</span><span class="token punctuation">(</span><span class="token number">4500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">// second try</span>
-            <span class="token function">LCD_write4bits</span><span class="token punctuation">(</span><span class="token number">0x03</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//    delayMicroseconds(4500); // wait min 4.1ms</span>
-            <span class="token function">Delay_us</span><span class="token punctuation">(</span><span class="token number">4500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">// third go!</span>
-            <span class="token function">LCD_write4bits</span><span class="token punctuation">(</span><span class="token number">0x03</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-        <span class="token comment" spellcheck="true">//    delayMicroseconds(150);</span>
-                <span class="token function">Delay_us</span><span class="token punctuation">(</span><span class="token number">150</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">// finally, set to 4-bit interface</span>
-            <span class="token function">LCD_write4bits</span><span class="token punctuation">(</span><span class="token number">0x02</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-          <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">// this is according to the hitachi HD44780 datasheet</span>
-            <span class="token comment" spellcheck="true">// page 45 figure 23</span>
+          // for some 1 line displays you can select a 10 pixel high font
+          if ((dotsize != LCD_5x8DOTS) && (lines == 1)) {
+            displayFunction |= LCD_5x10DOTS;
+          }
+          // SEE PAGE 45/46 FOR INITIALIZATION SPECIFICATION!
+          // according to datasheet, we need at least 40ms after power rises above 2.7V
+          // before sending commands. Arduino can turn on way before 4.5V so we'll wait 50
+          Delay_ms(5); 
+            LCD_RS=0;
+            LCD_EN=0;
+          LCD_RW=0;
+          //put the LCD into 4 bit or 8 bit mode
+          if (!(displayFunction & LCD_8BITMODE)){
+            // this is according to the hitachi HD44780 datasheet
+            // figure 24, pg 46
+            // we start in 8bit mode, try to set 4 bit mode
+            LCD_write4bits(0x03);
+        //    delayMicroseconds(4500); // wait min 4.1ms
+                Delay_us(4500);
+            // second try
+            LCD_write4bits(0x03);
+        //    delayMicroseconds(4500); // wait min 4.1ms
+            Delay_us(4500);
+            // third go!
+            LCD_write4bits(0x03); 
+        //    delayMicroseconds(150);
+                Delay_us(150);
+            // finally, set to 4-bit interface
+            LCD_write4bits(0x02); 
+          }else{
+            // this is according to the hitachi HD44780 datasheet
+            // page 45 figure 23
 
-            <span class="token comment" spellcheck="true">// Send function set command sequence</span>
-            <span class="token function">LCD_Command</span><span class="token punctuation">(</span>LCD_FUNCTIONSET <span class="token operator">|</span> displayFunction<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//    delayMicroseconds(4500);  // wait more than 4.1ms</span>
-                <span class="token function">Delay_us</span><span class="token punctuation">(</span><span class="token number">4500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">// second try</span>
-            <span class="token function">LCD_Command</span><span class="token punctuation">(</span>LCD_FUNCTIONSET <span class="token operator">|</span> displayFunction<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//    delayMicroseconds(150);</span>
-                <span class="token function">Delay_us</span><span class="token punctuation">(</span><span class="token number">150</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">// third go</span>
-            <span class="token function">LCD_Command</span><span class="token punctuation">(</span>LCD_FUNCTIONSET <span class="token operator">|</span> displayFunction<span class="token punctuation">)</span><span class="token punctuation">;</span>
-          <span class="token punctuation">}</span>
+            // Send function set command sequence
+            LCD_Command(LCD_FUNCTIONSET | displayFunction);
+        //    delayMicroseconds(4500);  // wait more than 4.1ms
+                Delay_us(4500);
+            // second try
+            LCD_Command(LCD_FUNCTIONSET | displayFunction);
+        //    delayMicroseconds(150);
+                Delay_us(150);
+            // third go
+            LCD_Command(LCD_FUNCTIONSET | displayFunction);
+          }
 
-          <span class="token comment" spellcheck="true">// finally, set # lines, font size, etc.</span>
-          <span class="token function">LCD_Command</span><span class="token punctuation">(</span>LCD_FUNCTIONSET <span class="token operator">|</span> displayFunction<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+          // finally, set # lines, font size, etc.
+          LCD_Command(LCD_FUNCTIONSET | displayFunction);  
 
-          <span class="token comment" spellcheck="true">// turn the display on with no cursor or blinking default</span>
-          displayControl <span class="token operator">=</span> LCD_DISPLAYON <span class="token operator">|</span> LCD_CURSOROFF <span class="token operator">|</span> LCD_BLINKOFF<span class="token punctuation">;</span>  
-          <span class="token function">LCD_Display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          // turn the display on with no cursor or blinking default
+          displayControl = LCD_DISPLAYON | LCD_CURSOROFF | LCD_BLINKOFF;  
+          LCD_Display();
 
-          <span class="token comment" spellcheck="true">// clear it off</span>
-          <span class="token function">LCD_Clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          // clear it off
+          LCD_Clear();
 
-          <span class="token comment" spellcheck="true">// Initialize to default text direction (for romance languages)</span>
-          displayMode <span class="token operator">=</span> LCD_ENTRYLEFT <span class="token operator">|</span> LCD_ENTRYSHIFTDECREMENT<span class="token punctuation">;</span>
-          <span class="token comment" spellcheck="true">// set the entry mode</span>
-          <span class="token function">LCD_Command</span><span class="token punctuation">(</span>LCD_ENTRYMODESET <span class="token operator">|</span> displayMode<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+          // Initialize to default text direction (for romance languages)
+          displayMode = LCD_ENTRYLEFT | LCD_ENTRYSHIFTDECREMENT;
+          // set the entry mode
+          LCD_Command(LCD_ENTRYMODESET | displayMode);
+        }
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>初始化数据线(四线制或八线制)</li>
 </ul>
-<pre class="line-numbers language-c"><code class="language-c">    <span class="token keyword">void</span> <span class="token function">LCD_Init</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span> fourbitmode<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>fourbitmode<span class="token punctuation">)</span>
-            displayFunction <span class="token operator">=</span> LCD_4BITMODE <span class="token operator">|</span> LCD_1LINE <span class="token operator">|</span> LCD_5x8DOTS<span class="token punctuation">;</span>
-          <span class="token keyword">else</span> 
-                displayFunction <span class="token operator">=</span> LCD_8BITMODE <span class="token operator">|</span> LCD_1LINE <span class="token operator">|</span> LCD_5x8DOTS<span class="token punctuation">;</span>
+<pre class="line-numbers language-lang-c"><code class="language-lang-c">    void LCD_Init(unsigned char fourbitmode){
+        if(fourbitmode)
+            displayFunction = LCD_4BITMODE | LCD_1LINE | LCD_5x8DOTS;
+          else 
+                displayFunction = LCD_8BITMODE | LCD_1LINE | LCD_5x8DOTS;
 
-        <span class="token function">LCD_Begin</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
-    <span class="token punctuation">}</span>
+        LCD_Begin(16, 1);  
+    }
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p> 2.在指定位置显示一个字节</p>
-<pre class="line-numbers language-c"><code class="language-c">    <span class="token keyword">void</span> <span class="token function">LCD_DisplayChr</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span> col<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> <span class="token keyword">char</span> row<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> <span class="token keyword">char</span> value<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<pre class="line-numbers language-lang-c"><code class="language-lang-c">    void LCD_DisplayChr(unsigned char col, unsigned char row, unsigned char value){
 
-        <span class="token function">LCD_SetCursor</span><span class="token punctuation">(</span>col<span class="token punctuation">,</span>row<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">LCD_Write</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+        LCD_SetCursor(col,row);
+        LCD_Write(value);
+    }
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p> 3.在指定位置显示字符串</p>
-<pre class="line-numbers language-c"><code class="language-c">    <span class="token keyword">void</span> <span class="token function">LCD_DisplayStr</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span> col<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> <span class="token keyword">char</span>     row<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> <span class="token keyword">char</span> code<span class="token operator">*</span> str<span class="token punctuation">)</span><span class="token punctuation">{</span>    
-        <span class="token keyword">unsigned</span> <span class="token keyword">char</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">>=</span><span class="token number">0x20</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token function">LCD_DisplayChr</span><span class="token punctuation">(</span>col<span class="token operator">+</span>i<span class="token punctuation">,</span> row<span class="token punctuation">,</span> str<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token function">Delay_us</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">></span><span class="token punctuation">(</span>lcdCol<span class="token operator">-</span>col<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>numLines<span class="token operator">-</span>row<span class="token punctuation">)</span><span class="token operator">>=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                <span class="token function">LCD_DisplayChr</span><span class="token punctuation">(</span><span class="token punctuation">(</span>i<span class="token operator">-</span>lcdCol<span class="token operator">+</span>col<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> row<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> str<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token function">Delay_us</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            i<span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
+<pre class="line-numbers language-lang-c"><code class="language-lang-c">    void LCD_DisplayStr(unsigned char col, unsigned char     row, unsigned char code* str){    
+        unsigned char i=0;
+        while(str[i]>=0x20){
+            LCD_DisplayChr(col+i, row, str[i]);
+            Delay_us(10);
+            if(i>(lcdCol-col) && ((numLines-row)>=1)){
+                LCD_DisplayChr((i-lcdCol+col-1), row+1, str[i]);
+                Delay_us(10);
+            }
+            i++;
+        }
+    }
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><p><strong>测试</strong></p>
 <p>在<em>main.c</em>文件</p>
 </li>
 </ul>
-<pre class="line-numbers language-c"><code class="language-c">    <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">unsigned</span> <span class="token keyword">char</span> i<span class="token punctuation">,</span>len<span class="token operator">=</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-lang-c"><code class="language-lang-c">    void main(void){
+        unsigned char i,len=sizeof(t);
 
-        P00<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token function">Delay_ms</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        P00<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token function">LCD_Init</span><span class="token punctuation">(</span>LINES_4<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">LCD_Begin</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">LCD_Clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">LCD_SetCursor</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">LCD_DisplayChr</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'A'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">Delay_ms</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">LCD_DisplayChr</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'B'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token function">Delay_ms</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">LCD_DisplayChr</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'C'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token function">Delay_ms</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">LCD_DisplayChr</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'D'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token function">Delay_ms</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">LCD_DisplayChr</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'E'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token function">Delay_ms</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">LCD_DisplayChr</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'F'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token function">Delay_ms</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">LCD_DisplayChr</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'G'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">LCD_DisplayStr</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> t<span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">//通过</span>
-    <span class="token comment" spellcheck="true">//    LCD_DisplayStr(0, 1, "test,LCD!";        //通过</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+        P00=0;
+        Delay_ms(1000);
+        P00=1;
+        LCD_Init(LINES_4);
+        LCD_Begin(16, 2);
+        LCD_Clear();
+        LCD_SetCursor(0,0);
+        LCD_DisplayChr(0, 0, 'A');
+        Delay_ms(100);
+        LCD_DisplayChr(1, 0, 'B');
+            Delay_ms(100);
+        LCD_DisplayChr(2, 0, 'C');
+            Delay_ms(100);
+        LCD_DisplayChr(3, 0, 'D');
+            Delay_ms(100);
+        LCD_DisplayChr(4, 0, 'E');
+                Delay_ms(100);
+        LCD_DisplayChr(0, 1, 'F');
+                Delay_ms(100);
+        LCD_DisplayChr(1, 1, 'G');
+        LCD_DisplayStr(0, 1, t);                //通过
+    //    LCD_DisplayStr(0, 1, "test,LCD!";        //通过
+        while(1);
+    }
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="/embedded/2018/10/05/c51-lcd1602/c51-lcd1602/739507439392664788.jpg" title="测试图">
+<img src="https://s2.ax1x.com/2019/09/24/uAnodJ.jpg" title="测试图">
 <img src="/embedded/2018/10/05/c51-lcd1602/c51-lcd1602/739507439392664788.jpg" width="350" height="700" title="测试图">
 <p><img src="/embedded/2018/10/05/c51-lcd1602/c51-lcd1602/739507439392664788.jpg" alt="ceshitu" width="300" height="150"></p>
 <p><strong><a href="https://yadi.sk/d/zt6OiTn9OTkfrw" target="_blank" rel="noopener">源码文件</a></strong>    </p>
-
+<a>code.zip 源码文件</a>
 <p>2018/10/6 22:17:54 2018/10/6 22:17:55 </p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -1054,7 +1054,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">5.2k</span>
+                <span class="white-color">4.9k</span>
             
 
             
@@ -1143,25 +1143,8 @@ $(function () {
     <script src="/libs/others/clicklove.js"></script>
 
 
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":2,"width":100,"height":250,"position":"right","hOffset":0,"vOffset":-50},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.5,"opacityOnHover":0.1},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":2,"width":100,"height":250,"position":"right","hOffset":0,"vOffset":-50},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.5,"opacityOnHover":0.1},"log":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>

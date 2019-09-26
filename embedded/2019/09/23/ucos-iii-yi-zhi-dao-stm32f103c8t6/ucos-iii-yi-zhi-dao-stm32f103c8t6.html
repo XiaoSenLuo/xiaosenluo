@@ -266,7 +266,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.5k
+                        1.4k
                     </div>
                     
 
@@ -295,6 +295,7 @@
 <p>但是更新到V5版本之后，ST推出了一个大杀器<a href="https://www.st.com/zh/development-tools/stm32cubeide.html" target="_blank" rel="noopener">STM32CubeIDE</a>,这个软件集成了STM32CubeMX，Eclipse，stlink，jlink，如果你用过stm32F系列芯片，就知道这意味着什么。秒天秒地的存在啊。</p>
 <p>本次移植也是基于STM32CubeIDE的。所以开始之前，请确保你有STM32CubeIDE，或者keil也可以，不过麻烦一点，或者你熟悉的一款IDE，但是你知道相应操作可以实现同样的效果就可以了。</p>
 <p><strong>说明一下</strong></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -317,6 +318,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>以下就是移植步骤：<br><strong>！！！！移植之前建议看一下《野火-UCOS-III内核实现与应用开发实战-基于STM32》</strong> 了解一下UCOS-III</p>
 <ol>
 <li>使用STM32CubeIDE创建一个裸板工程，点亮一个LED即可。具体操作不再赘述。</li>
@@ -329,7 +331,7 @@
 <p> <img src="https://i.loli.net/2019/09/23/UZDCIH1LGqvKNk3.png" alt=""></p>
 </li>
 </ol>
-<ol start="5">
+<ol>
 <li><p>添加文件到 <code>Src</code> 文件夹。</p>
 <ul>
 <li><p>打开 <code>\Micrium\Software\EvalBoards\Micrium\uC-Eval-STM32F107\uCOS-III</code> 目录，将以下文件复制到 <code>Src</code> </p>
@@ -342,35 +344,35 @@
 <li>修改 <code>includes.h</code>。 删除 <code>stm32f1xx_lib.h</code>， 添加 <code>stm32f1xx_hal.h</code> 和 <code>void         Error_Handler               (void);</code>。</li>
 <li>修改启动文件 <code>startup_stm32f103c8tx.s</code>。将 <code>PendSV_Handler</code> 替换成<code>OS_CPU_PendSVHandler</code>，有三处要替换， <code>SysTick_Handler</code> 替换 <code>OS_CPU_SysTickHandler</code>， 也有三处要替换。<br><img src="https://i.loli.net/2019/09/23/CSRcF8ErKwQkLyP.png" alt="一"><br><img src="https://i.loli.net/2019/09/23/MBLfqDOkXVr9RFx.png" alt="二"></li>
 <li><p>修改 <code>os_app_hooks.c</code>。在 <code>void  App_OS_TimeTickHook (void)</code> 添加 <code>HAL_IncTick();</code>。  </p>
-<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">void</span>  <span class="token function">App_OS_TimeTickHook</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-<span class="token function">HAL_IncTick</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<pre class="line-numbers language-lang-c"><code class="language-lang-c">void  App_OS_TimeTickHook (void){
+HAL_IncTick();
+}
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>修改 <code>bsp.c</code>。与 <code>BSP</code> 相关的代码都可以注释掉，只保留与 <code>DWT</code> 相关的。</li>
 <li>修改 <code>aap.c</code>。将 <code>main.c</code> 关于 <code>void SystemClock_Config(void)</code> 的声明和定义复制到 <code>app.c</code> ;之后就可以删除 <code>main.c</code> 和 <code>main.h</code>。接下来开始修改初始化系统和硬件的代码了，容易踩坑也是这里。cubeIEDE生成的代码里，一开始就调用了 <code>HAL_Init()</code>，在这个函数中，调用了 <code>HAL_InitTick()</code>, 这个函数就是坑，原因在于这个函数初始化了Systemtick 也就是所说的滴答时钟，一旦初始化完成，滴答时钟就开始运行，产生定时中断，而这个中断被UCOS接管了(<code>OS_CPU_SysTickHandler()</code>)，这个函数体：</li>
 </ul>
-<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">void</span>  <span class="token function">OS_CPU_SysTickHandler</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-<span class="token function">CPU_SR_ALLOC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">CPU_CRITICAL_ENTER</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-OSIntNestingCtr<span class="token operator">++</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* Tell uC/OS-III that we are starting an ISR  */</span>
-<span class="token function">CPU_CRITICAL_EXIT</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-lang-c"><code class="language-lang-c">void  OS_CPU_SysTickHandler (void)
+{
+CPU_SR_ALLOC();
+CPU_CRITICAL_ENTER();
+OSIntNestingCtr++;  /* Tell uC/OS-III that we are starting an ISR  */
+CPU_CRITICAL_EXIT();
 
-<span class="token function">OSTimeTick</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* Call  uC/OS-III's OSTimeTick()    */</span>
+OSTimeTick(); /* Call  uC/OS-III's OSTimeTick()    */
 
-<span class="token function">OSIntExit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* Tell uC/OS-III that we are leaving the ISR  */</span>
-<span class="token punctuation">}</span>
+OSIntExit(); /* Tell uC/OS-III that we are leaving the ISR  */
+}
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
 <p>可以看到,这个函数对 <code>OSIntNestingCtr</code> 进行了 <code>++</code> 操作，而在 <code>OSInit()</code> 函数里调用了 <code>OS_IdleTaskInit()</code>，<code>OS_IdleTaskInit()</code>函数调用 <code>OSTaskCreate()</code> 创建一个空闲任务，而在 <code>OSTaskCreate()</code> 里有这样的语句：</p>
-<pre class="line-numbers language-c"><code class="language-c">  <span class="token macro property">#<span class="token directive keyword">if</span> OS_CFG_CALLED_FROM_ISR_CHK_EN > 0u</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>OSIntNestingCtr <span class="token operator">></span> <span class="token punctuation">(</span>OS_NESTING_CTR<span class="token punctuation">)</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">/*  ---------- CANNOT CREATE A TASK FROM AN ISR ---------- */</span>
-    <span class="token operator">*</span>p_err <span class="token operator">=</span> OS_ERR_TASK_CREATE_ISR<span class="token punctuation">;</span>
-     <span class="token keyword">return</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token macro property">#<span class="token directive keyword">endif</span></span>
+<pre class="line-numbers language-lang-c"><code class="language-lang-c">  #if OS_CFG_CALLED_FROM_ISR_CHK_EN > 0u
+  if (OSIntNestingCtr > (OS_NESTING_CTR)0) {  /*  ---------- CANNOT CREATE A TASK FROM AN ISR ---------- */
+    *p_err = OS_ERR_TASK_CREATE_ISR;
+     return;
+  }
+  #endif
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>明显的 <code>OSIntNestingCtr</code> 大于 <code>0</code>,所以 <code>OSInit()</code>会失败。解决办法有两个(我采用第一种)：</p>
 <ul>
@@ -378,58 +380,58 @@ OSIntNestingCtr<span class="token operator">++</span><span class="token punctuat
 <li>先调用 <code>OSInit()</code> 后调用 <code>HAL_Init()</code>   </li>
 </ul>
 <p>void SystemClock_Config(void)这个函数最终会初始化SystemTick，所以 <code>void  OS_CPU_SysTickInit (CPU_INT32U  cnts)</code> 可以不用调用。<br>最终初始化程序为：</p>
-<pre class="line-numbers language-c"><code class="language-c"> <span class="token keyword">int</span>  <span class="token function">main</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  OS_ERR  err<span class="token punctuation">;</span>
-  <span class="token function">HAL_Init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token function">OSInit</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* Init uC/OS-III.  */</span>
-  <span class="token function">OSTaskCreate</span><span class="token punctuation">(</span><span class="token punctuation">(</span>OS_TCB     <span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>AppTaskStartTCB<span class="token punctuation">,</span>  <span class="token comment" spellcheck="true">/* Create the start task*/</span>
-              <span class="token punctuation">(</span>CPU_CHAR   <span class="token operator">*</span><span class="token punctuation">)</span><span class="token string">"App Task Start"</span><span class="token punctuation">,</span>
-              <span class="token punctuation">(</span>OS_TASK_PTR <span class="token punctuation">)</span> AppTaskStart<span class="token punctuation">,</span>
-              <span class="token punctuation">(</span><span class="token keyword">void</span>       <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token number">0</span><span class="token punctuation">,</span>
-              <span class="token punctuation">(</span>OS_PRIO     <span class="token punctuation">)</span> APP_TASK_START_PRIO<span class="token punctuation">,</span>
-              <span class="token punctuation">(</span>CPU_STK    <span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>AppTaskStartStk<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-              <span class="token punctuation">(</span>CPU_STK_SIZE<span class="token punctuation">)</span> APP_TASK_START_STK_SIZE <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">,</span>
-              <span class="token punctuation">(</span>CPU_STK_SIZE<span class="token punctuation">)</span> APP_TASK_START_STK_SIZE<span class="token punctuation">,</span>
-              <span class="token punctuation">(</span>OS_MSG_QTY  <span class="token punctuation">)</span> <span class="token number">5u</span><span class="token punctuation">,</span>
-              <span class="token punctuation">(</span>OS_TICK     <span class="token punctuation">)</span> <span class="token number">0u</span><span class="token punctuation">,</span>
-              <span class="token punctuation">(</span><span class="token keyword">void</span>       <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token number">0</span><span class="token punctuation">,</span>
-              <span class="token punctuation">(</span>OS_OPT      <span class="token punctuation">)</span><span class="token punctuation">(</span>OS_OPT_TASK_STK_CHK <span class="token operator">|</span> OS_OPT_TASK_STK_CLR<span class="token punctuation">)</span><span class="token punctuation">,</span>
-              <span class="token punctuation">(</span>OS_ERR     <span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-lang-c"><code class="language-lang-c"> int  main (void){
+  OS_ERR  err;
+  HAL_Init();
+  OSInit(&err);  /* Init uC/OS-III.  */
+  OSTaskCreate((OS_TCB     *)&AppTaskStartTCB,  /* Create the start task*/
+              (CPU_CHAR   *)"App Task Start",
+              (OS_TASK_PTR ) AppTaskStart,
+              (void       *) 0,
+              (OS_PRIO     ) APP_TASK_START_PRIO,
+              (CPU_STK    *)&AppTaskStartStk[0],
+              (CPU_STK_SIZE) APP_TASK_START_STK_SIZE / 10,
+              (CPU_STK_SIZE) APP_TASK_START_STK_SIZE,
+              (OS_MSG_QTY  ) 5u,
+              (OS_TICK     ) 0u,
+              (void       *) 0,
+              (OS_OPT      )(OS_OPT_TASK_STK_CHK | OS_OPT_TASK_STK_CLR),
+              (OS_ERR     *)&err);
 
-  <span class="token function">OSStart</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">/* Start multitasking (i.e. give control to uC/OS-III). */</span>
-  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
- <span class="token punctuation">}</span>
+  OSStart(&err);   /* Start multitasking (i.e. give control to uC/OS-III). */
+  for(;;){}
+ }
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p> <code>static  void  AppTaskStart (void *p_arg)</code></p>
-<pre class="line-numbers language-c"><code class="language-c"> <span class="token keyword">static</span>  <span class="token keyword">void</span>  <span class="token function">AppTaskStart</span> <span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>p_arg<span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// CPU_INT32U  cpu_clk_freq;</span>
-  <span class="token comment" spellcheck="true">//CPU_INT32U  cnts;</span>
-  OS_ERR      err<span class="token punctuation">;</span>
-  <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>p_arg<span class="token punctuation">;</span>
-  <span class="token function">SystemClock_Config</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token function">HAL_NVIC_EnableIRQ</span><span class="token punctuation">(</span>SysTick_IRQn<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token function">LED_Init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token function">CPU_Init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">//    cpu_clk_freq = HAL_RCC_GetHCLKFreq();  </span><span class="token comment" spellcheck="true">/* Determine SysTick reference freq.  */</span>
-  <span class="token comment" spellcheck="true">//    cnts = cpu_clk_freq / (CPU_INT32U)OSCfg_TickRate_Hz;  </span><span class="token comment" spellcheck="true">/* Determine nbr SysTick increments    */</span>
-  <span class="token comment" spellcheck="true">//    OS_CPU_SysTickInit(cnts);     </span><span class="token comment" spellcheck="true">/* Init uC/OS periodic time src (SysTick).   */</span>
-  <span class="token function">Mem_Init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* Initialize Memory Management Module  */</span>
-  <span class="token macro property">#<span class="token directive keyword">if</span> OS_CFG_STAT_TASK_EN > 0u</span>
-   <span class="token function">OSStatTaskCPUUsageInit</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">/* Compute CPU capacity with no task running */</span>
-  <span class="token macro property">#<span class="token directive keyword">endif</span></span>
-  <span class="token function">CPU_IntDisMeasMaxCurReset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token macro property">#<span class="token directive keyword">if</span> (APP_CFG_SERIAL_EN == DEF_ENABLED)</span>
-  <span class="token comment" spellcheck="true">//    BSP_Ser_Init(115200);     </span><span class="token comment" spellcheck="true">/* Enable Serial Interface   */</span>
-  <span class="token macro property">#<span class="token directive keyword">endif</span></span>
-  <span class="token function">AppTaskCreate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* Create Application Tasks   */</span>
-  <span class="token function">AppObjCreate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">/* Create Application Objects    */</span>
-  <span class="token keyword">while</span><span class="token punctuation">(</span>DEF_TRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">/* Task body, always written as an infinite loop. */</span>
-  <span class="token function">HAL_GPIO_TogglePin</span><span class="token punctuation">(</span>GPIOC<span class="token punctuation">,</span> GPIO_PIN_13<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">//OSTimeDly(100, OS_OPT_TIME_DLY, &amp;err);</span>
-  <span class="token function">OSTimeDlyHMSM</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> OS_OPT_TIME_HMSM_STRICT<span class="token punctuation">,</span> <span class="token operator">&amp;</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
- <span class="token punctuation">}</span>
+<pre class="line-numbers language-lang-c"><code class="language-lang-c"> static  void  AppTaskStart (void *p_arg){
+  // CPU_INT32U  cpu_clk_freq;
+  //CPU_INT32U  cnts;
+  OS_ERR      err;
+  (void)p_arg;
+  SystemClock_Config();
+  HAL_NVIC_EnableIRQ(SysTick_IRQn);
+  LED_Init();
+  CPU_Init();
+  //    cpu_clk_freq = HAL_RCC_GetHCLKFreq();  /* Determine SysTick reference freq.  */
+  //    cnts = cpu_clk_freq / (CPU_INT32U)OSCfg_TickRate_Hz;  /* Determine nbr SysTick increments    */
+  //    OS_CPU_SysTickInit(cnts);     /* Init uC/OS periodic time src (SysTick).   */
+  Mem_Init(); /* Initialize Memory Management Module  */
+  #if OS_CFG_STAT_TASK_EN > 0u
+   OSStatTaskCPUUsageInit(&err);   /* Compute CPU capacity with no task running */
+  #endif
+  CPU_IntDisMeasMaxCurReset();
+  #if (APP_CFG_SERIAL_EN == DEF_ENABLED)
+  //    BSP_Ser_Init(115200);     /* Enable Serial Interface   */
+  #endif
+  AppTaskCreate(); /* Create Application Tasks   */
+  AppObjCreate();   /* Create Application Objects    */
+  while(DEF_TRUE) {
+  /* Task body, always written as an infinite loop. */
+  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+  //OSTimeDly(100, OS_OPT_TIME_DLY, &err);
+  OSTimeDlyHMSM(0, 0, 0, 100, OS_OPT_TIME_HMSM_STRICT, &err);
+  }
+ }
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>至此，移植完成。<br>附上<br><a href="https://yadi.sk/d/q0Ti2v8Bakqd9w" target="_blank" rel="noopener">项目文件</a></p>
 </li>
@@ -646,50 +648,41 @@ OSIntNestingCtr<span class="token operator">++</span><span class="token punctuat
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/embedded/2019/09/23/ucos-iii-yi-zhi-dao-stm32f103c8t6/ucos-iii-yi-zhi-dao-stm32f103c8t6.html">
+                <a href="/kao-yan/2019/09/25/kao-yan-ji-lu-san-gai-lu-lun-yu-shu-li-tong-ji/kao-yan-ji-lu-san-gai-lu-lun-yu-shu-li-tong-ji.html">
                     <div class="card-image">
                         
+                        <img src="https://i.loli.net/2019/09/25/8uRZ3dYbhcPGeFt.jpg" class="responsive-img" alt="考研记录(三) 概率论与数理统计">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="UCOS-III移植到STM32F103C8T6">
-                        
-                        <span class="card-title">UCOS-III移植到STM32F103C8T6</span>
+                        <span class="card-title">考研记录(三) 概率论与数理统计</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary block-with-text">UCOS-III与STM32F103C8T6的融合前些天学校开设了一门实验课，让我对UCOS有了一些了解，不过，实验使用的是飞思卡尔的MC9X128XS的开发板，系统使用的是UCOS-II，实验课结束后，我就寻思着将UCOS移植到我手头的F</div>
+                    <div class="summary block-with-text">概率论与数理统计😄
+如果 $X, Y$ 独立，那么 f(x,y)=f_X(x) \cdot f_Y(y)
+
+如果$(X,Y) \backsim f\big(x)$，
+
+$Z=X+Y$ 的概率密度:
+f_z(z)={\int_{-\inft</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-23
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-24
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Embedded/" class="post-category" target="_blank">
-                                    Embedded
+                            <a href="/categories/考研/" class="post-category" target="_blank">
+                                    考研
                                 </a>
                             
                             
                         </span>
                     </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/STM32/" target="_blank">
-                        <span class="chip bg-color">STM32</span>
-                    </a>
-                    
-                    <a href="/tags/UCOS-III/" target="_blank">
-                        <span class="chip bg-color">UCOS-III</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -793,7 +786,7 @@ OSIntNestingCtr<span class="token operator">++</span><span class="token punctuat
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">5.2k</span>
+                <span class="white-color">4.9k</span>
             
 
             
@@ -882,25 +875,8 @@ $(function () {
     <script src="/libs/others/clicklove.js"></script>
 
 
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":2,"width":100,"height":250,"position":"right","hOffset":0,"vOffset":-50},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.5,"opacityOnHover":0.1},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":2,"width":100,"height":250,"position":"right","hOffset":0,"vOffset":-50},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.5,"opacityOnHover":0.1},"log":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>

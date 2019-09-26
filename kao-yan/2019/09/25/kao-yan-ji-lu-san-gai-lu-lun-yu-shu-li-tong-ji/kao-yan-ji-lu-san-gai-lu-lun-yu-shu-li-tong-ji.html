@@ -4,12 +4,14 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="考研记录(二) 高等数学, 嵌入式, Java, Blogs, 编程, 通信, 学习">
-    <meta name="description" content="2020 考研数学 张宇
+    <meta name="keywords" content="考研记录(三) 概率论与数理统计, 嵌入式, Java, Blogs, 编程, 通信, 学习">
+    <meta name="description" content="概率论与数理统计😄
+如果 $X, Y$ 独立，那么 f(x,y)=f_X(x) \cdot f_Y(y)
 
-        document.querySelectorAll(&#39;.github-emoji&#39;)
-          .forEach(el =&gt; {
-            if (!el.dataset.">
+如果$(X,Y) \backsim f\big(x)$，
+
+$Z=X+Y$ 的概率密度:
+f_z(z)={\int_{-\inft">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>考研记录(二) 高等数学 | XIAOSENLUO</title>
+    <title>考研记录(三) 概率论与数理统计 | XIAOSENLUO</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -207,13 +209,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://i.loli.net/2019/09/25/8uRZ3dYbhcPGeFt.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        考研记录(二) 高等数学
+                        考研记录(三) 概率论与数理统计
                     </div>
                 </div>
             </div>
@@ -344,14 +346,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-22
+                    2019-09-24
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        59
+                        375
                     </div>
                     
 
@@ -374,7 +376,50 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="2020-考研数学-张宇"><a href="#2020-考研数学-张宇" class="headerlink" title="2020 考研数学 张宇"></a>2020 考研数学 张宇</h1><p><img src="https://i.loli.net/2019/09/22/qBsfoAv7cm91YKb.jpg" height="315" width="560"></p>
+                <h1 id="概率论与数理统计😄"><a href="#概率论与数理统计😄" class="headerlink" title="概率论与数理统计😄"></a><strong>概率论与数理统计😄</strong></h1><ul>
+<li><p><strong>如果 $X, Y$ 独立</strong>，那么 <script type="math/tex">f(x,y)=f_X(x) \cdot f_Y(y)</script></p>
+</li>
+<li><p><strong>如果$(X,Y) \backsim f\big(x)$，</strong></p>
+<ul>
+<li><p>$Z=X+Y$ 的<strong>概率密度:</strong></p>
+<script type="math/tex; mode=display">f_z(z)={\int_{-\infty}^{+\infty} f(x,z-x)dx}
+\space=\space {\int_{-\infty}^{+\infty} f(z-y,y)dx}</script></li>
+<li><p>$Z=X-Y$ 的<strong>概率密度:</strong></p>
+<script type="math/tex; mode=display">f_z(z)={\int_{-\infty}^{+\infty} f(x,\  x-z)dx} \space=\space {\int_{-\infty}^{+\infty} f(y+z,y)dx}</script></li>
+<li><p>$Z=XY$ 的<strong>概率密度:</strong></p>
+<script type="math/tex; mode=display">f_z(z)=\int_{-\infty}^{+\infty} \cfrac{1}{\lvert x \rvert}f(x,\cfrac{z}{x})dx
+=\int_{-\infty}^{+\infty} \cfrac{1}{\lvert y \rvert}f(\cfrac{z}{y},y)dy</script></li>
+<li><p>$Z=\cfrac{X}{Y}$ 的<strong>概率密度:</strong></p>
+<script type="math/tex; mode=display">f_z(z) \space=\space {\int_{-\infty}^{+\infty}} \lvert y \rvert f(yz,y)dy</script></li>
+<li><p>$Z=\max{X,Y}$ 的<strong>概率密度:</strong></p>
+<script type="math/tex; mode=display">\begin{align}
+F_{max}(z)&=P\{\max\{X,Y\} \leqslant z\} = P\{X \leqslant z, Y \leqslant z\} \space=\space F(z,z) \\
+f_z(z)&=F_{max}(z)
+\end{align}</script></li>
+<li><p>$Z=\min{X,Y}$ 的<strong>概率密度:</strong></p>
+<script type="math/tex; mode=display">\begin{align}
+  F_{min}(z)&=P\{\min\{X,Y\} \leqslant z\} \\
+  &=P\{\lbrace X \leqslant z \rbrace \cup \{ Y \leqslant z \rbrace\} \\
+  &=F_X(z)+F_Y(z)-F_{XY}(z,z)
+\end{align}</script></li>
+</ul>
+</li>
+<li><p><strong>大数定律和中心极限定理</strong></p>
+<ul>
+<li><p><strong>切比雪夫大数定律</strong><br>$X_1,X_2,X_3\dots X_n$ 是独立同分布的随机变量序列， 如果方差 $DX_i(i \geqslant 1)$ 且存在上界，即存在常数 C ，<br>使 $DX_i \leqslant C$ 对于一切 $i \geqslant 1$ 均成立， 则 ${X_n}$ 服从大数定律：</p>
+<script type="math/tex; mode=display">\cfrac{1}{n}\sum_{i=1}^n X_i \xrightarrow{P} \cfrac{1}{n} \sum_{i=1}^n EX_i</script></li>
+<li><p><strong>伯努利大数定律</strong><br>假设 $\mu_n$ 是 <code>n</code> 重伯努利试验中事件 <code>A</code> 发生的次数，在每次试验中事件<br><code>A</code> 发生的概率为 $\mathcal{p}(0<p<1)$，则 $\cfrac{\mu_n}{n}="" \xrightarrow{p}p$，即对任意="" $\varepsilon=""> 0$，有</p<1)$，则></p>
+<script type="math/tex; mode=display">\lim_{n \rightarrow \infty}{P\biggl\{ \biggl\lvert\space \cfrac{\mu_n}{n} - \mathcal{p} \space\biggl\lvert <
+\varepsilon \biggl\} = 1}</script></li>
+<li><p><strong>辛钦大数定律</strong></p>
+<script type="math/tex; mode=display">\lim \biggl{\{} \biggl\lvert \cfrac{1}{n} \sum_{i=1}^n X_i - \mu \biggl\lvert < \varepsilon \biggl\} = 1</script></li>
+<li><p><strong>独立同分布中心定理</strong></p>
+</li>
+<li><p><strong>棣莫弗-拉普拉斯定理</strong></p>
+</li>
+</ul>
+</li>
+</ul>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -540,7 +585,7 @@
                     </span>
                     <a href="https://xiaosenluo.github.io" class="b-link-green">XIAOSENLUO</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/kao-yan/2019/09/22/kao-yan-ji-lu-er-gao-deng-shu-xue/kao-yan-ji-lu-er-gao-deng-shu-xue.html" class="b-link-green">考研记录(二) 高等数学</a>
+                    <a href="/kao-yan/2019/09/25/kao-yan-ji-lu-san-gai-lu-lun-yu-shu-li-tong-ji/kao-yan-ji-lu-san-gai-lu-lun-yu-shu-li-tong-ji.html" class="b-link-green">考研记录(三) 概率论与数理统计</a>
                 </p>
             </div>
         </div>
@@ -561,9 +606,9 @@
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'https://xiaosenluo.github.io/kao-yan/2019/09/22/kao-yan-ji-lu-er-gao-deng-shu-xue/kao-yan-ji-lu-er-gao-deng-shu-xue.html';
-        this.page.identifier = '/kao-yan/2019/09/22/kao-yan-ji-lu-er-gao-deng-shu-xue/kao-yan-ji-lu-er-gao-deng-shu-xue.html';
-        this.page.title = '考研记录(二) 高等数学';
+        this.page.url = 'https://xiaosenluo.github.io/kao-yan/2019/09/25/kao-yan-ji-lu-san-gai-lu-lun-yu-shu-li-tong-ji/kao-yan-ji-lu-san-gai-lu-lun-yu-shu-li-tong-ji.html';
+        this.page.identifier = '/kao-yan/2019/09/25/kao-yan-ji-lu-san-gai-lu-lun-yu-shu-li-tong-ji/kao-yan-ji-lu-san-gai-lu-lun-yu-shu-li-tong-ji.html';
+        this.page.title = '考研记录(三) 概率论与数理统计';
     };
     let disqus_shortname = 'xiaosenluo';
 
@@ -586,9 +631,53 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/kao-yan/2019/09/25/kao-yan-ji-lu-san-gai-lu-lun-yu-shu-li-tong-ji/kao-yan-ji-lu-san-gai-lu-lun-yu-shu-li-tong-ji.html">
+                    <div class="card-image">
+                        
+                        <img src="https://i.loli.net/2019/09/25/8uRZ3dYbhcPGeFt.jpg" class="responsive-img" alt="考研记录(三) 概率论与数理统计">
+                        
+                        <span class="card-title">考研记录(三) 概率论与数理统计</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">概率论与数理统计😄
+如果 $X, Y$ 独立，那么 f(x,y)=f_X(x) \cdot f_Y(y)
+
+如果$(X,Y) \backsim f\big(x)$，
+
+$Z=X+Y$ 的概率密度:
+f_z(z)={\int_{-\inft</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/考研/" class="post-category" target="_blank">
+                                    考研
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/embedded/2019/09/23/ucos-iii-yi-zhi-dao-stm32f103c8t6/ucos-iii-yi-zhi-dao-stm32f103c8t6.html">
                     <div class="card-image">
@@ -602,9 +691,9 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">UCOS-III与STM32F103C8T6的融合前些天学校开设了一门实验课，让我对UCOS有了一些了解，不过，实验使用的是飞思卡尔的MC9X128XS的开发板，系统使用的是UCOS-II，实验课结束后，我就寻思着将UCOS移植到我手头的F</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-23
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -628,46 +717,6 @@
                         <span class="chip bg-color">UCOS-III</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/kao-yan/2019/09/22/kao-yan-ji-lu-yi-kai-shi/kao-yan-ji-lu-yi-kai-shi.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="考研记录(一) 开始">
-                        
-                        <span class="card-title">考研记录(一) 开始</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">。。。。。。考研加油。。。。。。
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.datas</div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-21
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/考研/" class="post-category" target="_blank">
-                                    考研
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
                 </div>
                 
             </div>
